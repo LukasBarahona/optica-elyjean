@@ -1,0 +1,147 @@
+/* Escenas de scroll. Todo el movimiento vive bajo .motion-on (lo pone scroll-engine.js).
+   Sin JS, con reducción de movimiento o en pantallas bajas, todo se ve completo y estático:
+   por eso los valores por defecto son el estado final (var(--x, 1)). */
+
+.motion-on [data-scene="pin"]{position:relative;height:var(--length,260svh)}
+.motion-on [data-scene="pin"]>.stage{position:sticky;top:var(--header-h);height:calc(100svh - var(--header-h));overflow:hidden}
+
+/* Indicadores de progreso por tramo (compartidos) */
+.tramos{display:flex;gap:12px;margin-top:32px}
+.tramo{flex:1;position:relative;padding-top:10px;border-top:2px solid var(--line);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tramo::before{content:"";position:absolute;left:0;right:0;top:-2px;height:2px;background:var(--azul);transform:scaleX(var(--fill,1));transform-origin:left}
+
+/* ============ 05 · Arma tus lentes (producto por capas) ============ */
+.armar{background:var(--soft)}
+.armar .stage{display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:clamp(24px,4vw,64px);padding:clamp(24px,4vw,56px) var(--pad)}
+.armar__visual{position:relative;display:grid;place-items:center;min-height:0}
+.armar__svg{width:min(100%,560px);height:auto;overflow:visible}
+.armar__svg .rim,.armar__svg .puente,.armar__svg .patilla{fill:none;stroke:var(--ink);stroke-width:12;stroke-linecap:round;stroke-linejoin:round}
+.armar__svg .lente-fill{fill:url(#gradCristal)}
+.armar__svg .tinte{fill:var(--azul)}
+.armar__svg .brillo-ar{fill:#fff}
+.armar__chips{position:absolute;top:2%;right:4%;display:flex;flex-direction:column;gap:8px;align-items:flex-end}
+.armar__chip{background:#fff;border-radius:999px;padding:7px 14px;font-size:13px;font-weight:700;color:var(--azul-700);box-shadow:0 6px 18px #0e4a6e1a}
+.receta-card{position:absolute;right:2%;bottom:-2%;width:min(270px,62%);background:#fff;border-radius:16px;padding:14px 16px;box-shadow:0 18px 40px #0e4a6e26;font-size:12px}
+.receta-card h4{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--azul-700);margin-bottom:8px}
+.receta-card table{width:100%;border-collapse:collapse;text-align:center}
+.receta-card th{font-weight:700;color:var(--muted);padding:3px}
+.receta-card td{padding:3px;border-top:1px solid var(--line);font-variant-numeric:tabular-nums}
+.receta-card td:first-child{font-weight:800;color:var(--ink)}
+.entrega-chips{position:absolute;left:0;bottom:-2%;display:flex;flex-direction:column;gap:8px}
+.entrega-chips span{display:inline-flex;align-items:center;gap:8px;background:var(--azul);color:#fff;font-size:13px;font-weight:700;border-radius:999px;padding:8px 14px;width:max-content}
+.entrega-chips span::before{content:"";width:8px;height:8px;border-radius:50%;background:#fff}
+.armar__texto{position:relative}
+.armar__beats{display:grid}
+.armar__beat .num{display:block;font-size:14px;font-weight:800;color:var(--azul);letter-spacing:.1em;margin-bottom:10px}
+.armar__beat h3{font-size:clamp(26px,3vw,42px);font-weight:800;margin-bottom:14px}
+.armar__beat p{color:var(--muted);max-width:40ch;margin:0}
+.armar__beat+.armar__beat{margin-top:36px}
+.armar__cta{margin-top:28px}
+
+/* Estado por capas: el motor escribe --marco, --cristal, --trat, --receta, --entrega (0 → 1) */
+.motion-on .armar__svg .rim,.motion-on .armar__svg .puente,.motion-on .armar__svg .patilla{stroke-dasharray:1;stroke-dashoffset:calc(1 - var(--marco,1))}
+.motion-on .armar__svg .lente-fill{opacity:var(--cristal,1)}
+.armar__svg .tinte{opacity:calc(var(--trat,1) * .18)}
+.motion-on .armar__svg .brillo-ar{transform:translateX(calc(var(--trat,1) * 520px - 260px))}
+.motion-on .armar__chips{opacity:var(--trat,1);transform:translateY(calc((1 - var(--trat,1)) * 16px))}
+.motion-on .receta-card{opacity:var(--receta,1);transform:translateY(calc((1 - var(--receta,1)) * 40px))}
+.motion-on .entrega-chips{opacity:var(--entrega,1);transform:translateX(calc((1 - var(--entrega,1)) * -30px))}
+.motion-on .armar__beat{grid-area:1/1;margin:0;opacity:0}
+.motion-on .armar__beat:first-child{opacity:1}
+.motion-on .armar__cta{opacity:var(--entrega,1)}
+.armar .tramos{display:none}
+.motion-on .armar .tramos{display:flex}
+
+@media (max-width:860px){
+  .armar .stage{grid-template-columns:1fr;align-content:start;gap:16px}
+  .motion-on .armar .stage{display:flex;flex-direction:column;justify-content:space-between;gap:12px;padding-block:16px 20px}
+  .motion-on .armar__visual{flex:1;min-height:170px;width:100%}
+  .motion-on .armar__svg{max-height:100%;width:auto;max-width:92%}
+  .armar__texto{flex:none}
+  .motion-on .armar__beats{min-height:150px}
+  .armar__beat h3{font-size:24px;margin-bottom:8px}
+  .armar__beat p{font-size:15px}
+  .armar__beat .num{margin-bottom:4px}
+  .armar__cta{margin-top:14px}
+  .armar .tramos{margin-top:14px;gap:6px}
+  .tramo{font-size:0;padding-top:0}
+  .receta-card{width:min(220px,58%);font-size:11px;padding:10px 12px;bottom:0}
+  .entrega-chips{bottom:0}
+  .armar__texto .etiqueta{margin-bottom:6px}
+  .armar__chip,.entrega-chips span{font-size:11px;padding:5px 10px}
+}
+
+/* ============ 06 · Antes / después (barrido) ============ */
+.vision{background:var(--azul-900);color:#fff}
+.vision .stage{display:grid;grid-template-rows:auto 1fr;gap:clamp(16px,2.5vw,28px);padding:clamp(24px,4vw,48px) var(--pad)}
+.vision__cabecera{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
+.vision__cabecera h2{color:#fff}
+.vision__cabecera p{margin:0;max-width:44ch;opacity:.85}
+.vision__marco{position:relative;min-height:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.vista{position:relative;border-radius:24px;overflow:hidden;min-height:300px;display:grid;place-items:center;padding:28px;background:#fff;color:var(--ink)}
+.vista svg.cartilla{width:min(78%,420px);height:auto;max-height:100%}
+.vista figcaption{position:absolute;left:18px;bottom:16px;right:18px;display:flex;flex-direction:column;gap:2px}
+.vista figcaption strong{font-size:clamp(16px,1.6vw,22px)}
+.vista figcaption span{font-size:14px;opacity:.8}
+.vista--borrosa svg.cartilla{filter:blur(5px)}
+.vista--foto{background:radial-gradient(circle at 80% 15%,#cfe9f8 0,#9cc9e4 25%,#5b7f97 60%,#2f4655 100%);color:#fff}
+.vista--foto::before{content:"";position:absolute;inset:0;background:#0e2a3b;opacity:.45}
+.vista--foto svg.cartilla{position:relative;z-index:1}
+.vista--foto figcaption{z-index:2}
+.vista--foto .sol{position:absolute;top:22px;right:26px;width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 0 0 10px #ffffff33,0 0 0 22px #ffffff1a;z-index:1}
+.vista--azul{background:var(--azul-50)}
+.vista--azul .rayos{position:absolute;inset:0;background:repeating-linear-gradient(115deg,#38a9e138 0 10px,transparent 10px 34px);-webkit-mask:linear-gradient(90deg,#000 0 30%,transparent 48%);mask:linear-gradient(90deg,#000 0 30%,transparent 48%)}
+.vista--azul .filtro{position:absolute;top:8%;bottom:8%;left:40%;width:6px;border-radius:3px;background:var(--azul)}
+.vista--azul svg.cartilla,.vista--azul figcaption{position:relative;z-index:1}
+.vista--azul figcaption{position:absolute}
+.vision__guia{display:none}
+.motion-on .vision__marco{display:block}
+.motion-on .vision__marco .vista{position:absolute;inset:0;min-height:0}
+.motion-on .vision__marco .vista:not(:first-of-type){clip-path:inset(0 100% 0 0)}
+.motion-on .vision__guia{display:block;position:absolute;top:0;bottom:0;width:3px;margin-left:-1px;background:var(--azul);opacity:0;box-shadow:0 0 22px #38a9e1aa;z-index:5}
+.vision .tramos{display:none}
+.motion-on .vision .tramos{display:flex;margin-top:0}
+.vision .tramo{color:#ffffffb3;border-color:#ffffff2e}
+.motion-on .vision .stage{grid-template-rows:auto 1fr auto}
+@media (max-width:700px){
+  .vision__marco{grid-template-columns:1fr}
+  .vision__cabecera p{font-size:15px}
+  .vista{padding:20px 16px 72px}
+  .vista svg.cartilla{width:min(86%,320px)}
+  .vista--foto .sol{width:36px;height:36px;top:16px;right:16px}
+}
+
+/* ============ 09 · Operativo en tu empresa (línea de tiempo) ============ */
+.operativo{background:#fff}
+.operativo .stage{display:grid;align-content:center;gap:clamp(24px,4vw,48px);padding:clamp(24px,4vw,48px) var(--pad)}
+.operativo__cabecera{max-width:760px}
+.operativo__cabecera p{color:var(--muted);margin:14px 0 0}
+.linea{position:relative;display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(16px,2vw,32px);padding-top:44px}
+.linea__trazo{position:absolute;left:0;right:0;top:15px;height:4px;border-radius:2px;background:var(--azul-50)}
+.linea__trazo::after{content:"";position:absolute;inset:0;border-radius:inherit;background:var(--azul);transform:scaleX(var(--l,1));transform-origin:left}
+.hito{position:relative}
+.hito::before{content:"";position:absolute;top:-38px;left:0;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--azul)}
+.hito .num{font-weight:800;color:var(--azul);font-size:14px;letter-spacing:.1em}
+.hito h3{margin:6px 0 8px}
+.hito p{color:var(--muted);margin:0;font-size:15px}
+.operativo__sello{display:inline-flex;align-items:center;gap:12px;background:var(--rojo);color:#fff;border-radius:999px;padding:10px 22px;font-weight:800;justify-self:start}
+.motion-on .hito{opacity:var(--h,1);transform:translateY(calc((1 - var(--h,1)) * 24px))}
+.motion-on .operativo__sello{opacity:var(--s,1);transform:scale(calc(.9 + var(--s,1) * .1))}
+@media (max-width:860px){
+  .linea{grid-template-columns:1fr;padding:0 0 0 40px;gap:16px}
+  .linea__trazo{left:9px;right:auto;top:6px;bottom:6px;width:4px;height:auto}
+  .linea__trazo::after{transform:scaleY(var(--l,1));transform-origin:top}
+  .hito::before{top:4px;left:-40px}
+  .hito h3{font-size:17px;margin:2px 0 4px}
+  .hito p{font-size:14px}
+  .operativo .stage{gap:18px}
+  .operativo__cabecera p{font-size:15px}
+}
+@media (max-width:860px) and (max-height:700px){
+  .hito p{display:none}
+}
+
+@media print{
+  .motion-on [data-scene="pin"]{height:auto}
+  .motion-on [data-scene="pin"]>.stage{position:relative;height:auto}
+}

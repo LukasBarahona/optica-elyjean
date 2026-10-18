@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mi carro | Ópticas Elyjean</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css?v=1.0">
+  <link rel="stylesheet" href="css/tienda.css?v=1.0">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="pagina-cabecera">
+      <div class="contenedor">
+        <p class="migas"><a href="index.html">Inicio</a> / Mi carro</p>
+        <h1>Mi carro</h1>
+      </div>
+    </section>
+
+    <div class="contenedor carro" id="carro">
+      <section aria-label="Productos en el carro">
+        <div class="carro__items" id="items"></div>
+      </section>
+
+      <form class="checkout" id="checkout" novalidate>
+        <fieldset>
+          <legend>Entrega</legend>
+          <div class="opciones" id="entregas"></div>
+          <div class="campo" id="campoDireccion"><label for="direccion">Dirección y comuna</label><input id="direccion" autocomplete="street-address" placeholder="Calle, número, depto. y comuna"></div>
+          <div class="campo" id="campoTienda" hidden><label for="tienda">Tienda</label><select id="tienda"></select></div>
+          <div class="campo" id="campoEmpresa" hidden><label for="empresa">Empresa con convenio</label><input id="empresa" placeholder="Nombre de tu empresa"></div>
+        </fieldset>
+
+        <fieldset>
+          <legend>Tus datos</legend>
+          <div class="datos-grid">
+            <div class="campo campo--ancho"><label for="cNombre">Nombre y apellido</label><input id="cNombre" autocomplete="name"></div>
+            <div class="campo"><label for="cEmail">Correo</label><input id="cEmail" type="email" autocomplete="email"></div>
+            <div class="campo"><label for="cTel">Teléfono</label><input id="cTel" type="tel" autocomplete="tel" placeholder="+56 9"></div>
+          </div>
+        </fieldset>
+
+        <div class="resumen">
+          <dl id="totales"></dl>
+          <p class="error" id="errorCheckout" role="alert"></p>
+          <button class="btn btn--rojo btn--ancho" type="submit" id="pagar">Ir a pagar</button>
+          <div class="pagos" style="margin-top:12px;justify-content:center"><span>Webpay</span><span>Mercado Pago</span><span>Débito y crédito</span></div>
+          <p class="aviso-ejemplo">Prototipo: el pago es simulado y los precios son de ejemplo. En la tienda final aquí se conecta la pasarela de pago.</p>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/config.js?v=1.0"></script>
+  <script src="js/productos.js?v=1.0"></script>
+  <script src="js/app.js?v=1.0"></script>
+  <script src="js/carro.js?v=1.0"></script>
+</body>
+</html>

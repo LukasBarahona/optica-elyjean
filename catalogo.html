@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Catálogo de marcos | Ópticas Elyjean</title>
+  <meta name="description" content="Marcos ópticos para adultos y niños, y lentes de sol. Elige tu marco y arma tus lentes con tu receta.">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css?v=1.0">
+  <link rel="stylesheet" href="css/tienda.css?v=1.0">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="pagina-cabecera">
+      <div class="contenedor">
+        <p class="migas"><a href="index.html">Inicio</a> / <span id="migaCat">Catálogo</span></p>
+        <h1 id="tituloCat">Todos los marcos</h1>
+        <p>Elige tu marco y, en la ficha, suma el cristal, los tratamientos y tu receta.</p>
+      </div>
+    </section>
+
+    <div class="contenedor catalogo">
+      <details class="filtros-panel" id="filtros" open>
+        <summary>Filtrar marcos</summary>
+        <div class="grupo" data-grupo="categoria"><h3>Categoría</h3></div>
+        <div class="grupo" data-grupo="forma"><h3>Forma</h3></div>
+        <div class="grupo" data-grupo="material"><h3>Material</h3></div>
+        <div class="grupo" data-grupo="publico"><h3>Para</h3></div>
+        <button class="limpiar" id="limpiar" type="button">Limpiar filtros</button>
+      </details>
+
+      <section aria-labelledby="tituloCat">
+        <div class="catalogo__barra">
+          <p id="conteo" aria-live="polite"></p>
+          <label>
+            <span class="sr-only">Ordenar</span>
+            <select id="orden">
+              <option value="destacados">Destacados</option>
+              <option value="precio-asc">Precio: menor a mayor</option>
+              <option value="precio-desc">Precio: mayor a menor</option>
+              <option value="nombre">Nombre</option>
+            </select>
+          </label>
+        </div>
+        <div class="chips-activos" id="chipsActivos"></div>
+        <div class="grilla" id="grilla"></div>
+      </section>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/config.js?v=1.0"></script>
+  <script src="js/productos.js?v=1.0"></script>
+  <script src="js/app.js?v=1.0"></script>
+  <script src="js/catalogo.js?v=1.0"></script>
+</body>
+</html>

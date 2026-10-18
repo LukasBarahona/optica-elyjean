@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Arma tus lentes | Ópticas Elyjean</title>
+  <meta name="description" content="Elige tu marco, el cristal, los tratamientos y adjunta tu receta.">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css?v=1.0">
+  <link rel="stylesheet" href="css/tienda.css?v=1.0">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="contenedor">
+    <p class="migas" style="margin-top:20px"><a href="index.html">Inicio</a> / <a href="catalogo.html" id="migaCat">Catálogo</a> / <span id="migaNombre"></span></p>
+
+    <div class="ficha" id="ficha">
+      <div class="galeria">
+        <div class="galeria__principal"><img id="imgPrincipal" src="" alt="" width="1000" height="667"></div>
+        <p class="galeria__nota">Foto referencial del proveedor.</p>
+      </div>
+
+      <div class="ficha__info">
+        <span class="etiqueta" id="fichaCat"></span>
+        <h1 id="fichaNombre"></h1>
+        <p class="ficha__precio"><span id="fichaPrecio"></span> <small>marco</small></p>
+        <div class="ficha__datos" id="fichaDatos"></div>
+
+        <section class="paso-config" aria-labelledby="h-color">
+          <h2 id="h-color"><span>1</span>Color del marco</h2>
+          <div class="colores" id="colores"></div>
+          <p class="color-nombre" id="colorNombre"></p>
+          <div class="campo" id="campoColorLibre" hidden>
+            <label for="colorLibre">¿Qué color prefieres? (según la foto)</label>
+            <input id="colorLibre" type="text" placeholder="Ej: azul con patillas rosadas">
+          </div>
+        </section>
+
+        <section class="paso-config" aria-labelledby="h-cristal">
+          <h2 id="h-cristal"><span>2</span>Tipo de cristal</h2>
+          <div class="opciones" id="cristales"></div>
+        </section>
+
+        <section class="paso-config" aria-labelledby="h-trat">
+          <h2 id="h-trat"><span>3</span>Tratamientos <small style="font-weight:500;color:var(--muted)">(opcional)</small></h2>
+          <div class="opciones" id="tratamientos"></div>
+        </section>
+
+        <section class="paso-config" id="pasoReceta" aria-labelledby="h-receta">
+          <h2 id="h-receta"><span>4</span>Tu receta</h2>
+          <div class="receta-tabs" role="tablist" aria-label="Cómo entregar tu receta">
+            <button type="button" role="tab" data-modo="archivo" aria-selected="true">Subir receta</button>
+            <button type="button" role="tab" data-modo="grados" aria-selected="false">Escribir grados</button>
+            <button type="button" role="tab" data-modo="consulta" aria-selected="false">No tengo receta</button>
+          </div>
+
+          <div class="receta-panel" data-panel="archivo">
+            <label class="subir">
+              <input type="file" id="archivo" accept="image/*,application/pdf">
+              <strong>Sube una foto o PDF de tu receta</strong>
+              <small>Que se vean bien los valores de ambos ojos. Máx. 10 MB.</small>
+            </label>
+            <div class="archivo-ok" id="archivoOk" hidden></div>
+          </div>
+
+          <div class="receta-panel" data-panel="grados" hidden>
+            <table class="grados">
+              <thead><tr><th></th><th>Esfera</th><th>Cilindro</th><th>Eje</th><th class="col-add">Adición</th></tr></thead>
+              <tbody>
+                <tr data-ojo="od"><td>OD</td><td><select data-campo="esf" aria-label="Esfera ojo derecho"></select></td><td><select data-campo="cil" aria-label="Cilindro ojo derecho"></select></td><td><input data-campo="eje" type="number" min="0" max="180" inputmode="numeric" placeholder="0–180" aria-label="Eje ojo derecho"></td><td class="col-add"><select data-campo="add" aria-label="Adición ojo derecho"></select></td></tr>
+                <tr data-ojo="oi"><td>OI</td><td><select data-campo="esf" aria-label="Esfera ojo izquierdo"></select></td><td><select data-campo="cil" aria-label="Cilindro ojo izquierdo"></select></td><td><input data-campo="eje" type="number" min="0" max="180" inputmode="numeric" placeholder="0–180" aria-label="Eje ojo izquierdo"></td><td class="col-add"><select data-campo="add" aria-label="Adición ojo izquierdo"></select></td></tr>
+              </tbody>
+            </table>
+            <label class="dp">Distancia pupilar (DP) <input id="dp" type="number" min="45" max="80" inputmode="numeric" placeholder="mm"></label>
+            <p class="ayuda">OD = ojo derecho, OI = ojo izquierdo. Si tu receta no trae DP, déjalo en blanco y te contactamos.</p>
+          </div>
+
+          <div class="receta-panel" data-panel="consulta" hidden>
+            <div class="sin-receta">
+              <p><strong>Agenda tu consulta: es gratis si compras tus lentes.</strong></p>
+              <p>Reservamos tu marco y te contactamos para el examen visual. Fabricamos tus lentes con la receta que obtengas.</p>
+              <div class="campo"><label for="tiendaConsulta">¿Dónde prefieres atenderte?</label><select id="tiendaConsulta"></select></div>
+            </div>
+          </div>
+        </section>
+
+        <div class="resumen" aria-live="polite">
+          <dl id="resumen"></dl>
+          <p class="error" id="errorConfig" role="alert"></p>
+          <button class="btn btn--rojo btn--ancho" id="agregar" type="button">Agregar al carro</button>
+          <p class="aviso-ejemplo">Prototipo: precios de ejemplo.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <div class="toast" id="toast" role="status"><span>Lentes agregados al carro</span><a href="carro.html">Ver carro</a></div>
+
+  <div id="app-footer"></div>
+
+  <script src="js/config.js?v=1.0"></script>
+  <script src="js/productos.js?v=1.0"></script>
+  <script src="js/app.js?v=1.0"></script>
+  <script src="js/producto.js?v=1.0"></script>
+</body>
+</html>

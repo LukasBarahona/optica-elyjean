@@ -39,6 +39,7 @@
             <a href="catalogo.html?cat=adultos">Ópticos</a>
             <a href="catalogo.html?cat=ninos">Niños</a>
             <a href="catalogo.html?cat=sol">Sol</a>
+            <a href="probador.html">Probador virtual</a>
             <a href="${ancla('consulta-gratis')}">Consulta gratis</a>
             <a href="${ancla('empresas')}">Empresas</a>
             <a href="${ancla('tiendas')}">Tiendas</a>
@@ -137,6 +138,7 @@
       <a class="tarjeta" href="producto.html?id=${encodeURIComponent(p.id)}">
         <div class="tarjeta__img">
           ${p.etiqueta ? `<span class="tarjeta__etiqueta">${esc(p.etiqueta)}</span>` : ''}
+          ${p.colores.some(x => x.frente) ? '<span class="tarjeta__probador">Pruébatelos</span>' : ''}
           <img src="${esc(c.img)}" alt="${esc(p.nombre)}" loading="lazy" width="600" height="400">
         </div>
         <div class="tarjeta__info">

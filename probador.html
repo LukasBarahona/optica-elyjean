@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Probador virtual | Ópticas Elyjean</title>
+  <meta name="description" content="Pruébate nuestros lentes con la cámara de tu celular o computador.">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css?v=1.2">
+  <link rel="stylesheet" href="css/tienda.css?v=1.2">
+  <link rel="stylesheet" href="css/probador.css?v=1.2.1">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main class="contenedor probador">
+    <p class="migas" style="margin-top:20px"><a href="index.html">Inicio</a> / Probador virtual</p>
+
+    <div class="probador__grid">
+      <section class="escenario" aria-label="Vista del probador">
+        <canvas id="lienzo" width="1280" height="720" aria-label="Tu imagen con los lentes puestos"></canvas>
+
+        <div class="escenario__capa" id="capaInicio">
+          <svg viewBox="0 0 120 50" aria-hidden="true"><circle cx="32" cy="25" r="18"/><circle cx="88" cy="25" r="18"/><path d="M50 22q10-8 20 0"/></svg>
+          <h1>Pruébate los lentes</h1>
+          <p>Usa la cámara de tu celular o computador para ver cómo te quedan.</p>
+          <div class="escenario__acciones">
+            <button class="btn btn--rojo" id="btnCamara" type="button">Activar cámara</button>
+            <label class="btn btn--linea" for="foto">Usar una foto</label>
+          </div>
+          <p class="privacidad">Tu imagen se procesa solo en tu equipo y no se envía a ningún servidor.</p>
+        </div>
+
+        <div class="escenario__capa escenario__capa--estado" id="capaEstado" hidden>
+          <span class="cargador" aria-hidden="true"></span>
+          <p id="textoEstado">Cargando probador…</p>
+        </div>
+
+        <p class="aviso-cara" id="avisoCara" hidden>Mira de frente a la cámara, con buena luz.</p>
+
+        <div class="escenario__barra" id="barra" hidden>
+          <label class="tamano">Tamaño <input type="range" id="tamano" min="85" max="120" value="100" aria-label="Ajustar tamaño de los lentes"></label>
+          <button class="btn btn--blanco" id="btnFoto" type="button">Tomar foto</button>
+          <label class="btn btn--linea btn--claro" for="foto">Otra foto</label>
+          <button class="btn btn--linea btn--claro" id="btnVolverCamara" type="button" hidden>Cámara</button>
+        </div>
+        <input type="file" id="foto" accept="image/*" hidden>
+      </section>
+
+      <aside class="selector" aria-label="Elegir lentes">
+        <span class="etiqueta">Lentes de sol</span>
+        <h2 id="selNombre">Elige un modelo</h2>
+        <p class="selector__precio"><span id="selPrecio"></span> <a class="link" id="selFicha" href="catalogo.html?cat=sol">Armar este lente</a></p>
+        <div class="selector__lista" id="lista" role="listbox" aria-label="Modelos disponibles en el probador"></div>
+        <p class="ayuda">Por ahora el probador incluye los lentes de sol. Pronto sumaremos los marcos ópticos.</p>
+      </aside>
+    </div>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/config.js?v=1.2"></script>
+  <script src="js/productos.js?v=1.2"></script>
+  <script src="js/app.js?v=1.2"></script>
+  <script type="module" src="js/probador.js?v=1.2"></script>
+</body>
+</html>

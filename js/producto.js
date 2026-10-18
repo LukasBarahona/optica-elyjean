@@ -46,6 +46,9 @@
     $('#imgPrincipal').src = c.img;
     $('#imgPrincipal').alt = `${p.nombre}, color ${c.nombre}`;
     $('#colorNombre').textContent = variosColores ? 'Exhibidor con varios colores disponibles.' : `Color: ${c.nombre}`;
+    const probador = $('#btnProbador');
+    probador.hidden = !c.frente;
+    probador.href = `probador.html?id=${encodeURIComponent(p.id)}&c=${st.color}`;
     resumen();
   }
 

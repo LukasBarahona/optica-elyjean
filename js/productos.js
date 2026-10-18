@@ -1,6 +1,7 @@
 /* Productos generados desde los catálogos PDF de la carpeta Armazones.
    PRECIOS DE EJEMPLO: reemplazar por los precios reales de venta.
-   Colores: nombre aproximado detectado desde la foto (revisar). */
+   Colores: nombre aproximado detectado desde la foto (revisar).
+   frente: foto de frente sin fondo para el probador virtual (solo algunos modelos). */
 window.PRODUCTOS = [
  {
   "id": "acetato-01",
@@ -423,22 +424,26 @@ window.PRODUCTOS = [
    {
     "nombre": "Verde",
     "hex": "#4c4d50",
-    "img": "img/productos/sol-01-1.webp"
+    "img": "img/productos/sol-01-1.webp",
+    "frente": "img/probador/sol-01-1.webp"
    },
    {
     "nombre": "Negro",
     "hex": "#2a2b2d",
-    "img": "img/productos/sol-01-2.webp"
+    "img": "img/productos/sol-01-2.webp",
+    "frente": "img/probador/sol-01-2.webp"
    },
    {
     "nombre": "Naranjo",
     "hex": "#b88130",
-    "img": "img/productos/sol-01-3.webp"
+    "img": "img/productos/sol-01-3.webp",
+    "frente": "img/probador/sol-01-3.webp"
    },
    {
     "nombre": "Celeste",
     "hex": "#6aa3d7",
-    "img": "img/productos/sol-01-4.webp"
+    "img": "img/productos/sol-01-4.webp",
+    "frente": "img/probador/sol-01-4.webp"
    }
   ]
  },
@@ -457,12 +462,14 @@ window.PRODUCTOS = [
    {
     "nombre": "Carey",
     "hex": "#5a3618",
-    "img": "img/productos/sol-02-1.webp"
+    "img": "img/productos/sol-02-1.webp",
+    "frente": "img/probador/sol-02-1.webp"
    },
    {
     "nombre": "Negro",
     "hex": "#0d0c10",
-    "img": "img/productos/sol-02-2.webp"
+    "img": "img/productos/sol-02-2.webp",
+    "frente": "img/probador/sol-02-2.webp"
    }
   ]
  },
@@ -481,22 +488,26 @@ window.PRODUCTOS = [
    {
     "nombre": "Negro",
     "hex": "#14161c",
-    "img": "img/productos/sol-03-1.webp"
+    "img": "img/productos/sol-03-1.webp",
+    "frente": "img/probador/sol-03-1.webp"
    },
    {
     "nombre": "Carey",
     "hex": "#553722",
-    "img": "img/productos/sol-03-2.webp"
+    "img": "img/productos/sol-03-2.webp",
+    "frente": "img/probador/sol-03-2.webp"
    },
    {
     "nombre": "Café",
     "hex": "#8d6c3b",
-    "img": "img/productos/sol-03-3.webp"
+    "img": "img/productos/sol-03-3.webp",
+    "frente": "img/probador/sol-03-3.webp"
    },
    {
     "nombre": "Negro 2",
     "hex": "#10110c",
-    "img": "img/productos/sol-03-4.webp"
+    "img": "img/productos/sol-03-4.webp",
+    "frente": "img/probador/sol-03-4.webp"
    }
   ]
  },
@@ -515,12 +526,14 @@ window.PRODUCTOS = [
    {
     "nombre": "Azul",
     "hex": "#1f3361",
-    "img": "img/productos/sol-04-1.webp"
+    "img": "img/productos/sol-04-1.webp",
+    "frente": "img/probador/sol-04-1.webp"
    },
    {
     "nombre": "Carey",
     "hex": "#552f14",
-    "img": "img/productos/sol-04-2.webp"
+    "img": "img/productos/sol-04-2.webp",
+    "frente": "img/probador/sol-04-2.webp"
    }
   ]
  },
@@ -539,17 +552,20 @@ window.PRODUCTOS = [
    {
     "nombre": "Carey",
     "hex": "#753a26",
-    "img": "img/productos/sol-05-1.webp"
+    "img": "img/productos/sol-05-1.webp",
+    "frente": "img/probador/sol-05-1.webp"
    },
    {
     "nombre": "Carey 2",
     "hex": "#57351a",
-    "img": "img/productos/sol-05-2.webp"
+    "img": "img/productos/sol-05-2.webp",
+    "frente": "img/probador/sol-05-2.webp"
    },
    {
     "nombre": "Negro",
     "hex": "#262529",
-    "img": "img/productos/sol-05-3.webp"
+    "img": "img/productos/sol-05-3.webp",
+    "frente": "img/probador/sol-05-3.webp"
    }
   ]
  },
@@ -568,12 +584,14 @@ window.PRODUCTOS = [
    {
     "nombre": "Morado",
     "hex": "#463c49",
-    "img": "img/productos/sol-06-1.webp"
+    "img": "img/productos/sol-06-1.webp",
+    "frente": "img/probador/sol-06-1.webp"
    },
    {
     "nombre": "Carey",
     "hex": "#664629",
-    "img": "img/productos/sol-06-2.webp"
+    "img": "img/productos/sol-06-2.webp",
+    "frente": "img/probador/sol-06-2.webp"
    }
   ]
  },
@@ -592,22 +610,26 @@ window.PRODUCTOS = [
    {
     "nombre": "Negro",
     "hex": "#160d14",
-    "img": "img/productos/sol-07-1.webp"
+    "img": "img/productos/sol-07-1.webp",
+    "frente": "img/probador/sol-07-1.webp"
    },
    {
     "nombre": "Blanco",
     "hex": "#f7d49f",
-    "img": "img/productos/sol-07-2.webp"
+    "img": "img/productos/sol-07-2.webp",
+    "frente": "img/probador/sol-07-2.webp"
    },
    {
     "nombre": "Negro 2",
     "hex": "#35150a",
-    "img": "img/productos/sol-07-3.webp"
+    "img": "img/productos/sol-07-3.webp",
+    "frente": "img/probador/sol-07-3.webp"
    },
    {
     "nombre": "Negro 3",
     "hex": "#0e0e13",
-    "img": "img/productos/sol-07-4.webp"
+    "img": "img/productos/sol-07-4.webp",
+    "frente": "img/probador/sol-07-4.webp"
    }
   ]
  },
@@ -626,17 +648,20 @@ window.PRODUCTOS = [
    {
     "nombre": "Negro",
     "hex": "#242427",
-    "img": "img/productos/sol-08-1.webp"
+    "img": "img/productos/sol-08-1.webp",
+    "frente": "img/probador/sol-08-1.webp"
    },
    {
     "nombre": "Negro 2",
     "hex": "#303031",
-    "img": "img/productos/sol-08-2.webp"
+    "img": "img/productos/sol-08-2.webp",
+    "frente": "img/probador/sol-08-2.webp"
    },
    {
     "nombre": "Carey",
     "hex": "#4f2d18",
-    "img": "img/productos/sol-08-3.webp"
+    "img": "img/productos/sol-08-3.webp",
+    "frente": "img/probador/sol-08-3.webp"
    }
   ]
  },
@@ -655,17 +680,20 @@ window.PRODUCTOS = [
    {
     "nombre": "Negro",
     "hex": "#363c29",
-    "img": "img/productos/sol-09-1.webp"
+    "img": "img/productos/sol-09-1.webp",
+    "frente": "img/probador/sol-09-1.webp"
    },
    {
     "nombre": "Café",
     "hex": "#643f4d",
-    "img": "img/productos/sol-09-2.webp"
+    "img": "img/productos/sol-09-2.webp",
+    "frente": "img/probador/sol-09-2.webp"
    },
    {
     "nombre": "Negro 2",
     "hex": "#252626",
-    "img": "img/productos/sol-09-3.webp"
+    "img": "img/productos/sol-09-3.webp",
+    "frente": "img/probador/sol-09-3.webp"
    }
   ]
  },
@@ -684,22 +712,26 @@ window.PRODUCTOS = [
    {
     "nombre": "Carey",
     "hex": "#503341",
-    "img": "img/productos/sol-10-1.webp"
+    "img": "img/productos/sol-10-1.webp",
+    "frente": "img/probador/sol-10-1.webp"
    },
    {
     "nombre": "Negro",
     "hex": "#242424",
-    "img": "img/productos/sol-10-2.webp"
+    "img": "img/productos/sol-10-2.webp",
+    "frente": "img/probador/sol-10-2.webp"
    },
    {
     "nombre": "Burdeo",
     "hex": "#471d11",
-    "img": "img/productos/sol-10-3.webp"
+    "img": "img/productos/sol-10-3.webp",
+    "frente": "img/probador/sol-10-3.webp"
    },
    {
     "nombre": "Café",
     "hex": "#6f4b56",
-    "img": "img/productos/sol-10-4.webp"
+    "img": "img/productos/sol-10-4.webp",
+    "frente": "img/probador/sol-10-4.webp"
    }
   ]
  },

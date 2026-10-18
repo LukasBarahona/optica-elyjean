@@ -46,9 +46,10 @@
     $('#imgPrincipal').src = c.img;
     $('#imgPrincipal').alt = `${p.nombre}, color ${c.nombre}`;
     $('#colorNombre').textContent = variosColores ? 'Exhibidor con varios colores disponibles.' : `Color: ${c.nombre}`;
+    // Probador virtual: el botón aparece solo si el color tiene foto de frente (y el probador no está abierto).
     const probador = $('#btnProbador');
-    probador.hidden = !c.frente;
-    probador.href = `probador.html?id=${encodeURIComponent(p.id)}&c=${st.color}`;
+    if ($('#probador').hidden) probador.hidden = !c.frente;
+    document.dispatchEvent(new CustomEvent('ficha:color'));
     resumen();
   }
 
@@ -187,6 +188,9 @@
     clearTimeout(toast._t);
     toast._t = setTimeout(() => toast.classList.remove('is-visible'), 5000);
   });
+
+  // Para el probador virtual (js/probador.js)
+  window.Ficha = { producto: p, color: () => p.colores[st.color] };
 
   pintarColor();
   actualizar();

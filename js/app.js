@@ -39,7 +39,6 @@
             <a href="catalogo.html?cat=adultos">Ópticos</a>
             <a href="catalogo.html?cat=ninos">Niños</a>
             <a href="catalogo.html?cat=sol">Sol</a>
-            <a href="probador.html">Probador virtual</a>
             <a href="${ancla('consulta-gratis')}">Consulta gratis</a>
             <a href="${ancla('empresas')}">Empresas</a>
             <a href="${ancla('tiendas')}">Tiendas</a>

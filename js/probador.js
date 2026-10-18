@@ -1,7 +1,8 @@
-/* Probador virtual con realidad aumentada.
+/* Probador virtual con realidad aumentada, dentro de la ficha de cada lente.
    - MediaPipe Face Landmarker detecta la cara en el mismo navegador: la imagen nunca sale del equipo.
-   - Los lentes son fotos de frente sin fondo (campo "frente" en productos.js).
-   - Se alinean con las esquinas de los ojos (ángulo), el ancho de la cara (tamaño) y el giro de la cabeza (perspectiva simple). */
+   - Los lentes son fotos de frente sin fondo (campo "frente" en productos.js) del color elegido en la ficha.
+   - Se alinean con las esquinas de los ojos (ángulo), el ancho de la cara (tamaño) y el giro de la cabeza (perspectiva simple).
+   - Tamaño fijo para todos los modelos (TAMANO), sin control para el cliente. */
 import { FaceLandmarker, FilesetResolver } from 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/vision_bundle.mjs';
 
 const WASM = 'https://cdn.jsdelivr.net/npm/@mediapipe/tasks-vision@1.0.1/wasm';
@@ -10,20 +11,16 @@ const MODELO = 'https://storage.googleapis.com/mediapipe-models/face_landmarker/
 const OJO_DER_EXT = 33, OJO_DER_INT = 133, OJO_IZQ_INT = 362, OJO_IZQ_EXT = 263, SIEN_DER = 234, SIEN_IZQ = 454;
 const ANCLA_Y = 0.46;      // altura relativa de los cristales dentro de la foto del marco
 const ANCHO_CARA = 1.02;   // ancho del marco respecto del ancho de la cara a la altura de las sienes
+const TAMANO = 1.15;       // tamaño estándar (antes ajustable entre 0,85 y 1,20)
 
-const { fmt, esc } = window.App;
+const Ficha = window.Ficha;
 const $ = s => document.querySelector(s);
+const boton = $('#btnProbador');
+const escenario = $('#probador');
+const principal = $('.galeria__principal');
 const lienzo = $('#lienzo');
 const ctx = lienzo.getContext('2d');
 
-/* Modelos con foto de frente */
-const opciones = [];
-window.PRODUCTOS.forEach(p => p.colores.forEach((c, i) => { if (c.frente) opciones.push({ p, c, i }); }));
-const params = new URLSearchParams(location.search);
-let actual = Math.max(0, opciones.findIndex(o => o.p.id === params.get('id') && o.i === Number(params.get('c') || 0)));
-if (actual < 0 || !opciones[actual]) actual = 0;
-
-/* Estado */
 let detector = null, modo = null, video = null, stream = null, ultimoTiempo = -1, suave = null, fotoActual = null, caraFoto = null;
 
 const imagenes = new Map();
@@ -31,32 +28,9 @@ function imagen(src) {
   if (!imagenes.has(src)) { const im = new Image(); im.src = src; imagenes.set(src, im); }
   return imagenes.get(src);
 }
+const frenteActual = () => Ficha.color().frente;
 
-/* Selector */
-$('#lista').innerHTML = opciones.map((o, k) => `
-  <button class="miniatura" role="option" aria-selected="${k === actual}" data-k="${k}" type="button">
-    <img src="${esc(o.c.frente)}" alt="">
-    <span>${esc(o.p.codigo)} · ${esc(o.c.nombre)}</span>
-  </button>`).join('');
-$('#lista').addEventListener('click', e => {
-  const b = e.target.closest('.miniatura');
-  if (b) elegir(Number(b.dataset.k));
-});
-function elegir(k) {
-  actual = k;
-  const o = opciones[k];
-  document.querySelectorAll('.miniatura').forEach(b => b.setAttribute('aria-selected', String(Number(b.dataset.k) === k)));
-  $('#selNombre').textContent = `${o.p.nombre} · ${o.c.nombre}`;
-  $('#selPrecio').textContent = fmt(o.p.precio);
-  $('#selFicha').href = `producto.html?id=${encodeURIComponent(o.p.id)}`;
-  imagen(o.c.frente);
-  history.replaceState(null, '', `?id=${encodeURIComponent(o.p.id)}&c=${o.i}`);
-  if (modo === 'foto') dibujarFoto();
-}
-elegir(actual);
-document.querySelector(`.miniatura[data-k="${actual}"]`)?.scrollIntoView({ block: 'nearest', inline: 'nearest' });
-
-const estado = (texto) => { $('#capaEstado').hidden = !texto; $('#textoEstado').textContent = texto || ''; };
+const estado = texto => { $('#capaEstado').hidden = !texto; $('#textoEstado').textContent = texto || ''; };
 
 async function cargarDetector() {
   if (detector) return detector;
@@ -85,16 +59,36 @@ function pose(lm, w, h) {
 const mezclar = (a, b, t) => a ? Object.fromEntries(Object.keys(b).map(k => [k, a[k] + (b[k] - a[k]) * t])) : b;
 
 function dibujarLentes(p) {
-  const im = imagen(opciones[actual].c.frente);
+  const src = frenteActual();
+  if (!src) return;
+  const im = imagen(src);
   if (!im.complete || !im.naturalWidth) return;
-  const escala = Number($('#tamano').value) / 100;
-  const w = p.ancho * escala, h = w * im.naturalHeight / im.naturalWidth;
+  const w = p.ancho * TAMANO, h = w * im.naturalHeight / im.naturalWidth;
   ctx.save();
   ctx.translate(p.x, p.y);
   ctx.rotate(p.angulo);
   ctx.scale(p.sx, 1);
   ctx.drawImage(im, -w / 2, -h * ANCLA_Y, w, h);
   ctx.restore();
+}
+
+/* Abrir y cerrar dentro de la galería */
+function abrir() {
+  imagen(frenteActual());
+  principal.hidden = true;
+  escenario.hidden = false;
+  $('#capaInicio').hidden = false;
+  $('#barra').hidden = true;
+  $('#avisoCara').hidden = true;
+  boton.hidden = true;
+  if (matchMedia('(max-width:900px)').matches) escenario.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+function cerrar() {
+  detenerCamara();
+  modo = null; fotoActual = null; caraFoto = null;
+  escenario.hidden = true;
+  principal.hidden = false;
+  boton.hidden = !frenteActual();
 }
 
 /* Cámara */
@@ -120,10 +114,9 @@ async function iniciarCamara() {
     detenerCamara();
     estado('');
     $('#capaInicio').hidden = false;
-    const msg = err && err.name === 'NotAllowedError'
+    $('#textoInicio').textContent = err && err.name === 'NotAllowedError'
       ? 'No diste permiso para usar la cámara. Puedes activarlo en tu navegador o usar una foto.'
       : 'No pudimos abrir la cámara en este equipo. Prueba con una foto.';
-    $('#capaInicio').querySelector('p').textContent = msg;
   }
 }
 
@@ -155,10 +148,9 @@ function detenerCamara() {
 async function usarFoto(archivo) {
   if (!archivo) return;
   detenerCamara();
-  const url = URL.createObjectURL(archivo);
   const im = new Image();
   // onload en vez de decode(): decode() no termina en algunos navegadores integrados.
-  try { await new Promise((ok, ko) => { im.onload = ok; im.onerror = ko; im.src = url; }); }
+  try { await new Promise((ok, ko) => { im.onload = ok; im.onerror = ko; im.src = URL.createObjectURL(archivo); }); }
   catch { estado(''); return; }
   await cargarDetector();
   estado('Buscando tu cara…');
@@ -185,16 +177,24 @@ function dibujarFoto() {
 }
 
 /* Controles */
+boton.addEventListener('click', abrir);
+$('#btnCerrarProbador').addEventListener('click', cerrar);
 $('#btnCamara').addEventListener('click', iniciarCamara);
 $('#btnVolverCamara').addEventListener('click', iniciarCamara);
 $('#foto').addEventListener('change', e => { usarFoto(e.target.files[0]); e.target.value = ''; });
-$('#tamano').addEventListener('input', () => { if (modo === 'foto') dibujarFoto(); });
 $('#btnFoto').addEventListener('click', () => {
   lienzo.toBlob(b => {
     if (!b) return;
-    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(b), download: `elyjean-${opciones[actual].p.codigo}.png` });
+    const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(b), download: `elyjean-${Ficha.producto.codigo}.png` });
     a.click();
     setTimeout(() => URL.revokeObjectURL(a.href), 2000);
   }, 'image/png');
+});
+// Al cambiar de color en la ficha, el probador muestra ese color (o se cierra si no tiene foto de frente).
+document.addEventListener('ficha:color', () => {
+  if (escenario.hidden) return;
+  if (!frenteActual()) { cerrar(); return; }
+  imagen(frenteActual()).addEventListener('load', () => { if (modo === 'foto') dibujarFoto(); }, { once: true });
+  if (modo === 'foto') dibujarFoto();
 });
 addEventListener('pagehide', detenerCamara);

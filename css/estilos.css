@@ -24,6 +24,7 @@
   --radius:18px;
   --ease:cubic-bezier(.16,1,.3,1);
   --header-h:0px;
+  --frame:clamp(420px,calc(100svh - var(--header-h)),900px);  /* alto de los frames a pantalla completa */
 }
 
 /* ============ Base ============ */
@@ -116,7 +117,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .hero__slides{display:grid}
 .slide{grid-area:1/1;opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
 .slide.is-active{opacity:1;visibility:visible;transition:opacity .6s ease .25s,visibility 0s}
-.slide__inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(24px,4vw,64px);min-height:clamp(420px,calc(100svh - var(--header-h)),900px);padding-block:clamp(20px,4svh,48px) clamp(40px,7svh,64px);padding-inline:max(var(--pad),64px)}
+.slide__inner{display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:clamp(24px,4vw,64px);min-height:var(--frame);padding-block:clamp(20px,4svh,48px) clamp(40px,7svh,64px);padding-inline:max(var(--pad),64px)}
 .slide__texto h1,.slide__texto h2{font-size:clamp(30px,min(4.4vw,8.2svh),68px);font-weight:800;margin-bottom:clamp(10px,2svh,20px)}
 .slide__texto h1 em,.slide__texto h2 em{color:#fff;font-style:italic;display:block}
 .slide__texto p{font-size:clamp(15px,min(1.3vw,2.6svh),19px);max-width:52ch;opacity:.95}
@@ -147,16 +148,21 @@ button,input,select,textarea{font:inherit;color:inherit}
   .hero__flecha{top:calc(20px + var(--burbuja)/2)}
 }
 
-/* ============ Franja de confianza ============ */
-.confianza{border-bottom:1px solid var(--line)}
-.confianza__grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding-block:22px}
-.confianza__item{display:flex;align-items:center;gap:12px}
-.confianza__item svg{width:36px;height:36px;flex:none;fill:none;stroke:var(--azul);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
-.confianza__item p{margin:0;font-size:14px;line-height:1.3}
-.confianza__item small{display:block;color:var(--muted);font-size:12px}
-.confianza__item strong{font-weight:700}
-@media (max-width:900px){.confianza__grid{grid-template-columns:repeat(2,1fr);row-gap:18px}}
-@media (max-width:420px){.confianza__item p{font-size:13px}}
+/* ============ Qué hacemos (frame con foto) ============ */
+.empresa{position:relative;min-height:var(--frame);display:grid;align-items:end;color:#fff;background:var(--azul-900);overflow:hidden}
+.empresa__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
+.empresa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0b223066 0,#0b2230c7 45%,#0b2230e0 100%)}
+.empresa__contenido{position:relative;z-index:1;text-align:center;padding-block:clamp(32px,6svh,64px)}
+.empresa__contenido h2{font-size:clamp(28px,min(3.6vw,7svh),52px);max-width:22ch;margin-inline:auto}
+.empresa__contenido p{max-width:64ch;margin:clamp(12px,2.5svh,22px) auto 0;font-size:clamp(15px,min(1.3vw,2.6svh),19px);opacity:.95}
+.empresa__puntos{list-style:none;margin:clamp(20px,5svh,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.empresa__puntos li{display:flex;align-items:center;gap:12px;background:#fff;color:var(--ink);border-radius:16px;padding:14px 16px;text-align:left}
+.empresa__puntos svg{width:34px;height:34px;flex:none;fill:none;stroke:var(--azul);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.empresa__puntos span{font-size:14px;line-height:1.25}
+.empresa__puntos small{display:block;color:var(--muted);font-size:12px}
+.empresa__puntos strong{font-weight:700}
+@media (max-width:1000px){.empresa__puntos{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:480px){.empresa__puntos{grid-template-columns:1fr}.empresa{min-height:0}}
 
 /* ============ Pestañas y carrusel de productos ============ */
 .pestanas{display:flex;gap:8px;flex-wrap:wrap}
@@ -203,7 +209,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 .vision__cristal[aria-pressed="true"]{background:var(--azul);border-color:var(--azul)}
 .vision__info{margin-top:18px;min-height:6.4em}
 .vision__info p{margin:0;opacity:.92;max-width:46ch}
-.vision__nota{display:block;margin-top:8px;font-size:12px;opacity:.65}
 .vision__marco{display:grid;aspect-ratio:4/3;max-height:min(70svh,520px);width:100%}
 .vista{grid-area:1/1;position:relative;margin:0;border-radius:24px;overflow:hidden;display:grid;place-items:center;padding:24px 24px 48px;background:#fff;color:var(--ink);opacity:0;visibility:hidden;transition:opacity .45s ease,visibility .45s}
 .vista.is-activa{opacity:1;visibility:visible}

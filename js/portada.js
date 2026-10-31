@@ -52,7 +52,7 @@
   /* Comparador: sin lentes → con lentes → tipo de cristal */
   const vision = document.querySelector('.vision');
   const subVision = document.getElementById('visionSub');
-  const estadoVision = { modo: 'sin', cristal: 'foto' };
+  const estadoVision = { modo: 'sin', cristal: 'normal' };
   function verVision() {
     const { modo, cristal } = estadoVision;
     const activa = modo === 'con' ? cristal : 'sin';

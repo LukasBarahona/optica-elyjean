@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css?v=1.4">
-  <link rel="stylesheet" href="css/escenas.css?v=1.4">
+  <link rel="stylesheet" href="css/estilos.css?v=1.5">
+  <link rel="stylesheet" href="css/escenas.css?v=1.5">
 </head>
 <body>
 
@@ -86,13 +86,18 @@
       <div class="hero__puntos" role="tablist" aria-label="Elegir destacado"></div>
     </section>
 
-    <!-- 03 · Franja de confianza -->
-    <section class="confianza" aria-label="Por qué elegirnos">
-      <div class="contenedor confianza__grid">
-        <div class="confianza__item"><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13"/><path d="M16 9v7l5 3"/></svg><p><small>Más de</small><strong>10 años de experiencia</strong></p></div>
-        <div class="confianza__item"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 7-8"/></svg><p><small>Todos nuestros</small><strong>lentes con garantía</strong></p></div>
-        <div class="confianza__item"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="3" width="18" height="26" rx="2"/><path d="M11 10h10M11 15h10M11 20h6"/></svg><p><small>Boletas para reembolso</small><strong>Fonasa, Isapres y seguros</strong></p></div>
-        <div class="confianza__item"><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="26" height="17" rx="3"/><path d="M3 13h26M8 20h6"/></svg><p><small>Convenios con</small><strong>cuotas para trabajadores</strong></p></div>
+    <!-- 03 · Qué hacemos -->
+    <section class="empresa" aria-labelledby="t-empresa">
+      <img class="empresa__foto" src="img/cliente-lentes.webp" alt="" width="1920" height="1282" loading="lazy">
+      <div class="contenedor empresa__contenido" data-reveal>
+        <h2 id="t-empresa">Cuidamos tu visión, de la consulta a tus lentes</h2>
+        <p>Somos una óptica con más de 10 años de experiencia. Hacemos exámenes visuales, preparamos tus lentes con tu receta y visitamos empresas con operativos oftalmológicos para que cuidar tu vista sea simple.</p>
+        <ul class="empresa__puntos">
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13"/><path d="M16 9v7l5 3"/></svg><span><small>Más de</small><strong>10 años de experiencia</strong></span></li>
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3l11 4v8c0 7-5 12-11 14C10 27 5 22 5 15V7z"/><path d="M11 16l4 4 7-8"/></svg><span><small>Todos nuestros</small><strong>Lentes con garantía</strong></span></li>
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="3" width="18" height="26" rx="2"/><path d="M11 10h10M11 15h10M11 20h6"/></svg><span><small>Fonasa, Isapres y seguros</small><strong>Boletas para reembolso</strong></span></li>
+          <li><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="3" y="8" width="26" height="17" rx="3"/><path d="M3 13h26M8 20h6"/></svg><span><small>Para empresas</small><strong>Convenio para trabajadores</strong></span></li>
+        </ul>
       </div>
     </section>
 
@@ -187,9 +192,11 @@
             <div class="armar__beat"><span class="num">05</span><h3>Recíbelos</h3><p>Envío a domicilio, retiro en una de nuestras 2 tiendas o entrega en tu empresa.</p></div>
           </div>
           <a href="catalogo.html" class="btn btn--rojo armar__cta">Armar mis lentes</a>
-          <div class="tramos" aria-hidden="true">
-            <span class="tramo" data-tramo>Marco</span><span class="tramo" data-tramo>Cristal</span><span class="tramo" data-tramo>Tratamientos</span><span class="tramo" data-tramo>Receta</span><span class="tramo" data-tramo>Entrega</span>
-          </div>
+        </div>
+
+        <div class="progreso" aria-hidden="true">
+          <span class="progreso__linea"></span>
+          <span class="progreso__paso" data-tramo>Marco</span><span class="progreso__paso" data-tramo>Cristal</span><span class="progreso__paso" data-tramo>Tratamientos</span><span class="progreso__paso" data-tramo>Receta</span><span class="progreso__paso" data-tramo>Entrega</span>
         </div>
       </div>
     </section>
@@ -205,21 +212,26 @@
             <button class="vision__opcion" type="button" data-modo="con" aria-pressed="false">Con lentes Elyjean</button>
           </div>
           <div class="vision__sub" id="visionSub" role="group" aria-label="Elegir tipo de cristal">
-            <button class="vision__cristal" type="button" data-cristal="foto" aria-pressed="true">Fotocromáticos</button>
+            <button class="vision__cristal" type="button" data-cristal="normal" aria-pressed="true">Transparentes</button>
+            <button class="vision__cristal" type="button" data-cristal="foto" aria-pressed="false">Fotocromáticos</button>
             <button class="vision__cristal" type="button" data-cristal="azul" aria-pressed="false">Con filtro azul</button>
           </div>
           <div class="vision__info" aria-live="polite">
             <p data-info="sin"><strong>Sin tus lentes.</strong> Las letras se ven borrosas y la vista se cansa más rápido. Elige una opción para ver la diferencia.</p>
+            <p data-info="normal" hidden><strong>Transparentes.</strong> Corrigen tu visión con un cristal claro, sin tinte ni filtros. Ves nítido de lejos y de cerca, según tu receta.</p>
             <p data-info="foto" hidden><strong>Fotocromáticos.</strong> Se oscurecen con el sol y vuelven a ser claros bajo techo. Un solo lente para todo el día, sin cambiarte de lentes.</p>
             <p data-info="azul" hidden><strong>Con filtro azul.</strong> Filtran parte de la luz azul de pantallas y celulares. Pensados para quienes pasan muchas horas frente al computador.</p>
           </div>
-          <small class="vision__nota">Ilustración referencial.</small>
         </div>
 
         <div class="vision__marco" data-reveal>
           <figure class="vista vista--borrosa is-activa" data-panel="sin">
             <svg class="cartilla" viewBox="0 0 300 220" aria-hidden="true"><use href="#cartilla"/></svg>
             <figcaption>Sin lentes</figcaption>
+          </figure>
+          <figure class="vista" data-panel="normal">
+            <svg class="cartilla" viewBox="0 0 300 220" aria-hidden="true"><use href="#cartilla"/></svg>
+            <figcaption>Transparentes</figcaption>
           </figure>
           <figure class="vista vista--foto" data-panel="foto">
             <span class="sol"></span>
@@ -234,7 +246,7 @@
         </div>
       </div>
 
-      <!-- Cartilla de letras reutilizada en las tres vistas -->
+      <!-- Cartilla de letras reutilizada en las cuatro vistas -->
       <svg width="0" height="0" style="position:absolute" aria-hidden="true">
         <symbol id="cartilla" viewBox="0 0 300 220">
           <g font-family="Montserrat, Arial, sans-serif" font-weight="800" fill="currentColor" text-anchor="middle">
@@ -427,11 +439,11 @@
 
   <div id="app-footer"></div>
 
-  <script src="js/config.js?v=1.4"></script>
-  <script src="js/productos.js?v=1.4"></script>
-  <script src="js/app.js?v=1.4"></script>
-  <script src="js/scroll-engine.js?v=1.4"></script>
-  <script src="js/escenas.js?v=1.4"></script>
-  <script src="js/portada.js?v=1.4"></script>
+  <script src="js/config.js?v=1.5"></script>
+  <script src="js/productos.js?v=1.5"></script>
+  <script src="js/app.js?v=1.5"></script>
+  <script src="js/scroll-engine.js?v=1.5"></script>
+  <script src="js/escenas.js?v=1.5"></script>
+  <script src="js/portada.js?v=1.5"></script>
 </body>
 </html>

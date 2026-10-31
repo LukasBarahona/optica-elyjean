@@ -20,7 +20,7 @@
       b.style.transform = `translate3d(0,${((1 - v) * 24).toFixed(1)}px,0)`;
       b.toggleAttribute('aria-hidden', v < 0.5);
     });
-    tracks.forEach((t, i) => t.style.setProperty('--fill', clamp(pos - i).toFixed(3)));
+    tracks.forEach((t, i) => t.classList.toggle('is-hecho', pos >= i));
   }
   const limpiar = sel => el => el.querySelectorAll(sel).forEach(n => { n.removeAttribute('style'); n.removeAttribute('aria-hidden'); });
 
@@ -33,6 +33,7 @@
     stage.style.setProperty('--trat', range(t, q * 2, q * 2.85).toFixed(3));
     stage.style.setProperty('--receta', range(t, q * 3, q * 3.85).toFixed(3));
     stage.style.setProperty('--entrega', range(t, q * 4, q * 4.85).toFixed(3));
+    stage.style.setProperty('--avance', clamp(t * 5 / 4).toFixed(3));   // la línea llega a Entrega al empezar su tramo
     beats(p, el, clamp, '.armar__beat');
   }, el => { el.querySelector('.stage').removeAttribute('style'); limpiar('.armar__beat,[data-tramo]')(el); });
 

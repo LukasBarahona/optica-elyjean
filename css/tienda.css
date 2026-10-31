@@ -8,24 +8,27 @@
 
 /* ============ Catálogo ============ */
 .catalogo{display:grid;grid-template-columns:240px 1fr;gap:clamp(24px,3vw,48px);padding-block:36px 80px}
-.filtros-panel{position:sticky;top:calc(var(--header-h) + 20px);align-self:start;display:grid;gap:24px}
+.filtros-panel{position:sticky;top:calc(var(--header-h) + 16px);align-self:start;display:grid;gap:20px;background:var(--soft);border-radius:var(--radius);padding:20px;max-height:calc(100svh - var(--header-h) - 32px);overflow:auto;scrollbar-width:thin}
 .filtros-panel>summary{display:none}
 .grupo h3{font-size:13px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:10px}
 .opcion{display:flex;align-items:center;gap:10px;padding:6px 0;cursor:pointer;font-size:15px;text-transform:capitalize}
-.opcion input{width:18px;height:18px;accent-color:var(--azul)}
+.opcion input{appearance:none;flex:none;width:20px;height:20px;margin:0;display:grid;place-items:center;border:1.5px solid #22303A40;border-radius:6px;background:#fff;cursor:pointer;transition:background .2s,border-color .2s}
+.opcion:hover input{border-color:var(--azul)}
+.opcion input:checked{background:var(--azul);border-color:var(--azul)}
+.opcion input:checked::after{content:"";width:5px;height:10px;border:solid #fff;border-width:0 2px 2px 0;rotate:45deg;translate:0 -1px}
 .opcion small{color:var(--muted);margin-left:auto}
 .limpiar{background:none;border:0;padding:0;color:var(--azul-700);font-weight:700;cursor:pointer;justify-self:start;text-decoration:underline}
 .catalogo__barra{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:22px}
 .catalogo__barra p{margin:0;color:var(--muted)}
-.catalogo__barra select{border:1.5px solid #22303A33;border-radius:999px;padding:9px 14px;background:#fff}
-.grilla{display:grid;grid-template-columns:repeat(3,1fr);gap:28px 22px}
+.catalogo__barra .lista{width:230px}
+.catalogo__barra .lista__boton{border-radius:999px;padding:9px 16px;font-size:14px}
+.grilla{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:28px 22px}
 .vacio{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--muted)}
 .chips-activos{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
 .chips-activos button{border:0;background:var(--azul-50);color:var(--azul-700);font-weight:700;border-radius:999px;padding:6px 12px;cursor:pointer;font-size:13px}
-@media (max-width:1100px){.grilla{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:860px){
   .catalogo{grid-template-columns:1fr;padding-top:20px}
-  .filtros-panel{position:static;display:block;border:1.5px solid var(--line);border-radius:16px;padding:0 16px}
+  .filtros-panel{position:static;display:block;max-height:none;padding:0 16px}
   .filtros-panel>summary{display:flex;justify-content:space-between;align-items:center;list-style:none;cursor:pointer;padding:14px 0;font-weight:700}
   .filtros-panel>summary::-webkit-details-marker{display:none}
   .filtros-panel>summary::after{content:"+";font-size:24px;color:var(--azul)}
@@ -82,7 +85,10 @@
 .grados{width:100%;border-collapse:separate;border-spacing:6px}
 .grados th{font-size:12px;color:var(--muted);font-weight:700;text-align:center}
 .grados td:first-child{font-weight:800;width:36px}
-.grados select,.grados input{width:100%;border:1.5px solid #22303A33;border-radius:10px;padding:8px 4px;text-align:center;background:#fff;font-size:15px}
+.grados input{width:100%;border:1.5px solid #22303A33;border-radius:10px;padding:8px 4px;text-align:center;background:#fff;font-size:15px}
+.grados .lista__boton{justify-content:center;padding:8px 4px;border-radius:10px;font-size:15px}
+.grados .lista__boton::after{display:none}
+.grados .lista__panel{right:auto;min-width:96px;max-height:220px;text-align:center}
 .grados .col-add[hidden]{display:none}
 .dp{display:flex;align-items:center;gap:10px;margin-top:10px;font-size:14px;font-weight:600}
 .dp input{width:90px;border:1.5px solid #22303A33;border-radius:10px;padding:8px;text-align:center}
@@ -99,7 +105,7 @@
 .toast.is-visible{opacity:1;pointer-events:auto;transform:none}
 .toast a{color:#fff;font-weight:800;white-space:nowrap}
 @media (max-width:900px){.ficha{grid-template-columns:1fr}.galeria{position:static}}
-@media (max-width:420px){.grados{border-spacing:3px}.grados select,.grados input{font-size:14px;padding:7px 2px}}
+@media (max-width:420px){.grados{border-spacing:3px}.grados .lista__boton,.grados input{font-size:14px;padding:7px 2px}}
 
 /* ============ Carro ============ */
 .carro{display:grid;grid-template-columns:1.3fr .9fr;gap:clamp(24px,4vw,56px);padding-block:32px 80px;align-items:start}

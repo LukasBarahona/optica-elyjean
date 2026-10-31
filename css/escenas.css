@@ -18,7 +18,12 @@
 .hito .num{font-weight:800;color:var(--azul);font-size:14px;letter-spacing:.1em}
 .hito h3{margin:6px 0 8px}
 .hito p{color:var(--muted);margin:0;font-size:15px}
-.operativo__sello{display:inline-flex;align-items:center;gap:12px;background:var(--rojo);color:#fff;border-radius:999px;padding:10px 22px;font-weight:800;justify-self:start}
+.operativo__sello{display:inline-flex;align-items:center;gap:12px;background:var(--rojo);color:#fff;border-radius:999px;padding:12px 24px;font-weight:800;justify-self:start;text-decoration:none;transition:background .2s}
+.operativo__sello:hover{background:#b81e25}
+/* Destino del enlace Empresas: el final de la escena, con todo ya visible */
+.operativo{position:relative}
+.operativo__ancla{position:absolute;top:0}
+.motion-on .operativo__ancla{top:auto;bottom:calc(100svh - var(--header-h) - 12px)}
 .motion-on .hito{opacity:var(--h,1);transform:translateY(calc((1 - var(--h,1)) * 24px))}
 .motion-on .operativo__sello{opacity:var(--s,1);transform:scale(calc(.9 + var(--s,1) * .1))}
 @media (max-width:860px){

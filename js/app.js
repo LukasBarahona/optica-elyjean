@@ -62,34 +62,35 @@
     if (!el) return;
     el.outerHTML = `
     <footer class="footer">
-      <div class="contenedor footer__grid">
-        <div class="footer__marca">
-          <img src="img/logo.png" alt="${esc(C.marca)}" width="96" height="96" loading="lazy">
-          <p>Más de 10 años cuidando la visión de familias y trabajadores.</p>
-        </div>
-        <div>
-          <h4>Tienda</h4>
-          <a href="catalogo.html?cat=adultos">Lentes ópticos</a>
-          <a href="catalogo.html?cat=ninos">Lentes infantiles</a>
-          <a href="catalogo.html?cat=sol">Lentes de sol</a>
-          <a href="carro.html">Mi carro</a>
-        </div>
-        <div>
-          <h4>Servicios</h4>
-          <a href="${ancla('contacto')}">Agendar consulta</a>
-          <a href="${ancla('empresas')}">Operativos en empresas</a>
-          <a href="${ancla('reembolso')}">Reembolso y cuotas</a>
-          <a href="${ancla('preguntas')}">Preguntas frecuentes</a>
-          <a href="nosotros.html">Nosotros</a>
-          <a href="nosotros.html#soporte">Soporte al cliente</a>
-        </div>
-        <div>
-          <h4>Contacto</h4>
-          <a href="tel:+${C.whatsapp}">${esc(C.telefonoVisible)}</a>
-          ${C.tiendas.map(t => `<span>${esc(t.nombre)}: ${esc(t.direccion)}</span>`).join('')}
-        </div>
+      <div class="contenedor contenedor--ancho footer__grid">
+        <a href="index.html" class="footer__marca" aria-label="${esc(C.marca)}, inicio">
+          <img src="img/logo.png" alt="" width="44" height="44" loading="lazy"><span>Elyjean</span>
+        </a>
+        <nav class="footer__columnas" aria-label="Pie de página">
+          <div>
+            <h4>Tienda</h4>
+            <a href="catalogo.html?cat=adultos">Lentes ópticos</a>
+            <a href="catalogo.html?cat=ninos">Lentes infantiles</a>
+            <a href="catalogo.html?cat=sol">Lentes de sol</a>
+            <a href="carro.html">Mi carro</a>
+          </div>
+          <div>
+            <h4>Servicios</h4>
+            <a href="${ancla('contacto')}">Agendar consulta</a>
+            <a href="${ancla('empresas')}">Operativos en empresas</a>
+            <a href="${ancla('reembolso')}">Reembolso y cuotas</a>
+            <a href="${ancla('preguntas')}">Preguntas frecuentes</a>
+          </div>
+          <div>
+            <h4>Elyjean</h4>
+            <a href="nosotros.html">Nosotros</a>
+            <a href="nosotros.html#tiendas">Nuestras tiendas</a>
+            <a href="nosotros.html#soporte">Soporte al cliente</a>
+            <a href="tel:+${C.whatsapp}">${esc(C.telefonoVisible)}</a>
+          </div>
+        </nav>
       </div>
-      <p class="footer__legal">© ${new Date().getFullYear()} ${esc(C.marca)} · Prototipo: precios de ejemplo.</p>
+      <p class="footer__legal">© ${new Date().getFullYear()} ${esc(C.marca)}</p>
     </footer>
     <a class="whatsapp" href="${waLink('Hola, quiero consultar por lentes.')}" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
       <svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16 3a13 13 0 0 0-11.2 19.6L3 29l6.6-1.7A13 13 0 1 0 16 3zm0 23.6c-2 0-4-.6-5.7-1.6l-.4-.2-3.9 1 1-3.8-.3-.4A10.6 10.6 0 1 1 16 26.6zm5.8-7.9c-.3-.2-1.9-.9-2.2-1-.3-.1-.5-.2-.7.2l-1 1.2c-.2.2-.4.2-.7.1a8.7 8.7 0 0 1-4.3-3.8c-.3-.6.3-.5 1-1.7.1-.2 0-.4 0-.6l-1-2.4c-.3-.6-.5-.5-.7-.5h-.6c-.2 0-.6.1-.9.4-.3.3-1.2 1.2-1.2 2.9s1.2 3.4 1.4 3.6c.2.2 2.4 3.7 5.9 5.2 2.2.9 3 1 4.1.8.7-.1 1.9-.8 2.2-1.5.3-.8.3-1.4.2-1.5-.1-.2-.3-.3-.6-.4z"/></svg>
@@ -110,8 +111,6 @@
     if (!btn || !nav) return;
     const cerrar = () => { nav.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); document.body.classList.remove('menu-abierto'); };
     btn.addEventListener('click', () => {
-      // El menú parte bajo el encabezado, también en páginas sin motor de escenas.
-      document.documentElement.style.setProperty('--header-h', `${document.querySelector('[data-header]').offsetHeight}px`);
       const abierto = nav.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', String(abierto));
       document.body.classList.toggle('menu-abierto', abierto);
@@ -155,6 +154,76 @@
       </a>`;
   }
 
+  /* Listas desplegables con la estética de la web: el <select> sigue guardando el valor. */
+  function lista(select, n) {
+    const caja = document.createElement('div');
+    caja.className = 'lista';
+    const boton = Object.assign(document.createElement('button'), { type: 'button', className: 'lista__boton' });
+    const texto = document.createElement('span');
+    const panel = document.createElement('ul');
+    panel.className = 'lista__panel';
+    panel.id = `lista-${n}`;
+    panel.hidden = true;
+    panel.setAttribute('role', 'listbox');
+    boton.setAttribute('aria-haspopup', 'listbox');
+    boton.setAttribute('aria-expanded', 'false');
+    boton.setAttribute('aria-controls', panel.id);
+    boton.append(texto);
+    select.after(caja);
+    caja.append(select, boton, panel);
+    select.hidden = true;
+
+    const etiqueta = select.labels[0];
+    const nombre = select.getAttribute('aria-label') || (etiqueta ? etiqueta.textContent.trim() : '');
+    let activa = -1;
+    const pintar = () => {
+      texto.textContent = select.selectedOptions[0] ? select.selectedOptions[0].textContent : '';
+      boton.setAttribute('aria-label', `${nombre}: ${texto.textContent}`);
+    };
+    const marcar = i => {
+      activa = i;
+      [...panel.children].forEach((li, k) => {
+        li.classList.toggle('is-activa', k === i);
+        if (k === i) { boton.setAttribute('aria-activedescendant', li.id); li.scrollIntoView({ block: 'nearest' }); }
+      });
+    };
+    const abierta = () => !panel.hidden;
+    const cerrar = () => {
+      panel.hidden = true;
+      boton.setAttribute('aria-expanded', 'false');
+      boton.removeAttribute('aria-activedescendant');
+    };
+    const abrir = () => {
+      panel.innerHTML = [...select.options].map((o, i) => `<li role="option" id="${panel.id}-${i}" data-i="${i}" aria-selected="${o.selected}">${esc(o.textContent)}</li>`).join('');
+      panel.hidden = false;
+      boton.setAttribute('aria-expanded', 'true');
+      const r = boton.getBoundingClientRect();
+      caja.classList.toggle('lista--arriba', innerHeight - r.bottom < panel.offsetHeight + 12 && r.top > panel.offsetHeight + 12);
+      marcar(Math.max(0, select.selectedIndex));
+    };
+    const elegir = i => {
+      select.selectedIndex = i;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+      cerrar();
+      boton.focus();
+    };
+
+    boton.addEventListener('click', () => (abierta() ? cerrar() : abrir()));
+    panel.addEventListener('click', e => { const li = e.target.closest('li'); if (li) elegir(Number(li.dataset.i)); });
+    boton.addEventListener('keydown', e => {
+      if (e.key === 'Tab' || e.key === 'Escape') { cerrar(); return; }
+      if (!['ArrowDown', 'ArrowUp', 'Enter', ' '].includes(e.key)) return;
+      e.preventDefault();
+      if (!abierta()) { abrir(); return; }
+      if (e.key === 'Enter' || e.key === ' ') elegir(activa);
+      else marcar(Math.min(panel.children.length - 1, Math.max(0, activa + (e.key === 'ArrowDown' ? 1 : -1))));
+    });
+    document.addEventListener('click', e => { if (!caja.contains(e.target)) cerrar(); });
+    if (etiqueta) etiqueta.addEventListener('click', e => { e.preventDefault(); boton.focus(); });
+    select.addEventListener('change', pintar);
+    pintar();
+  }
+
   /* Apariciones para páginas sin motor de escenas. */
   function apariciones() {
     if (window.Scrolltelling) return;
@@ -162,11 +231,15 @@
   }
 
   encabezado();
+  document.documentElement.style.setProperty('--header-h', `${document.querySelector('[data-header]').offsetHeight}px`);
   pie();
   actualizarContador();
   menu();
   anuncios();
-  addEventListener('DOMContentLoaded', apariciones);
+  addEventListener('DOMContentLoaded', () => {
+    apariciones();
+    document.querySelectorAll('select').forEach(lista);
+  });
 
   window.App = { fmt, esc, waLink, Carro, tarjeta, C };
 })();

@@ -73,13 +73,19 @@
     document.querySelectorAll('.lente').forEach(l => { l.hidden = !(f === 'todos' || l.dataset.tipo === f || l.dataset.tipo === 'todos'); });
   }));
 
+  /* Al llegar desde otra página a un ancla (#empresas, #contacto): ir cuando el diseño ya está medido */
+  addEventListener('load', () => {
+    const destino = location.hash && document.getElementById(location.hash.slice(1));
+    if (destino) destino.scrollIntoView({ behavior: 'instant' });
+  });
+
   /* Formulario → WhatsApp */
   const form = document.getElementById('formContacto');
   const motivo = form.motivo;
   const campoEmpresa = document.getElementById('campoEmpresa');
   const sync = () => { campoEmpresa.hidden = motivo.value !== 'Operativo para mi empresa'; };
   motivo.addEventListener('change', sync);
-  document.querySelectorAll('[data-motivo]').forEach(a => a.addEventListener('click', () => { motivo.value = a.dataset.motivo; sync(); }));
+  document.querySelectorAll('[data-motivo]').forEach(a => a.addEventListener('click', () => { motivo.value = a.dataset.motivo; motivo.dispatchEvent(new Event('change')); }));
   form.addEventListener('submit', e => {
     e.preventDefault();
     const error = document.getElementById('formError');

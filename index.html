@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css?v=1.6">
-  <link rel="stylesheet" href="css/escenas.css?v=1.6">
+  <link rel="stylesheet" href="css/estilos.css?v=1.8">
+  <link rel="stylesheet" href="css/escenas.css?v=1.8">
 </head>
 <body>
 
@@ -127,10 +127,10 @@
           <div>
             <span class="etiqueta etiqueta--blanca">Nuevo · Probador virtual</span>
             <h2>Pruébatelos con tu cámara</h2>
-            <p>Al elegir tus lentes de sol, toca «Pruébatelos» y mira cómo te quedan antes de comprar. Tu imagen se procesa solo en tu equipo.</p>
-            <a href="catalogo.html?cat=sol" class="btn btn--blanco">Elegir lentes de sol</a>
+            <p>Elige tu marco, toca «Pruébatelos» y mira cómo te queda antes de comprar. Tu imagen se procesa solo en tu equipo.</p>
+            <a href="catalogo.html" class="btn btn--blanco">Elegir mi marco</a>
           </div>
-          <img src="img/probador/sol-07-1.webp" alt="Lentes de sol del probador virtual" loading="lazy">
+          <img src="img/marco-probador.webp" alt="Marco óptico" width="720" height="248" loading="lazy">
         </div>
       </div>
     </section>
@@ -274,7 +274,8 @@
     </section>
 
     <!-- 09 ★ Operativo en tu empresa (línea de tiempo) -->
-    <section class="operativo" id="empresas" data-scene="pin" data-handler="linea" style="--length:300svh" aria-labelledby="t-operativo">
+    <section class="operativo" data-scene="pin" data-handler="linea" style="--length:300svh" aria-labelledby="t-operativo">
+      <span class="operativo__ancla" id="empresas"></span>
       <div class="stage">
         <div class="operativo__cabecera">
           <span class="etiqueta">Operativos en terreno</span>
@@ -288,17 +289,7 @@
           <div class="hito"><span class="num">03</span><h3>Evaluamos</h3><p>A cada trabajador que quiera participar.</p></div>
           <div class="hito"><span class="num">04</span><h3>Entregamos</h3><p>Los lentes en la empresa, con pago en cuotas por convenio.</p></div>
         </div>
-        <span class="operativo__sello">Consulta sin costo para la empresa</span>
-      </div>
-    </section>
-
-    <section class="operativo__cierre">
-      <div class="contenedor acciones" data-reveal>
-        <a href="#contacto" class="btn btn--rojo" data-motivo="Operativo para mi empresa">Agenda tu operativo</a>
-        <a href="tel:+56999999999" class="telefono" data-tel>
-          <span class="telefono__icono" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.6a1 1 0 0 1-.25 1z"/></svg></span>
-          <span data-tel-texto>+569 9999 9999</span>
-        </a>
+        <a href="#contacto" class="operativo__sello" data-motivo="Operativo para mi empresa">Consulta sin costo para tu empresa</a>
       </div>
     </section>
 
@@ -362,7 +353,7 @@
             </select>
           </div>
           <div class="campo" id="campoEmpresa" hidden><label for="empresa">Empresa y n.º aproximado de trabajadores</label><input id="empresa" name="empresa" type="text" placeholder="Ej: Constructora Sur, 40 personas"></div>
-          <div class="campo"><label for="mensaje">Mensaje (opcional)</label><textarea id="mensaje" name="mensaje" rows="3" placeholder="Cuéntanos qué día te acomoda"></textarea></div>
+          <div class="campo"><label for="mensaje">Mensaje (opcional)</label><textarea id="mensaje" name="mensaje" rows="2" placeholder="Cuéntanos qué día te acomoda"></textarea></div>
           <button type="submit" class="btn btn--rojo btn--ancho">Enviar por WhatsApp</button>
           <p class="error" id="formError" role="alert"></p>
         </form>
@@ -373,11 +364,11 @@
 
   <div id="app-footer"></div>
 
-  <script src="js/config.js?v=1.6"></script>
-  <script src="js/productos.js?v=1.6"></script>
-  <script src="js/app.js?v=1.6"></script>
-  <script src="js/scroll-engine.js?v=1.6"></script>
-  <script src="js/escenas.js?v=1.6"></script>
-  <script src="js/portada.js?v=1.6"></script>
+  <script src="js/config.js?v=1.8"></script>
+  <script src="js/productos.js?v=1.8"></script>
+  <script src="js/app.js?v=1.8"></script>
+  <script src="js/scroll-engine.js?v=1.8"></script>
+  <script src="js/escenas.js?v=1.8"></script>
+  <script src="js/portada.js?v=1.8"></script>
 </body>
 </html>

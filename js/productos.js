@@ -18,17 +18,20 @@ window.PRODUCTOS = [
    {
     "nombre": "Café",
     "hex": "#746821",
-    "img": "img/productos/acetato-01-1.webp"
+    "img": "img/productos/acetato-01-1.webp",
+    "frente": "img/probador/acetato-01-1.webp"
    },
    {
     "nombre": "Carey",
     "hex": "#582e30",
-    "img": "img/productos/acetato-01-2.webp"
+    "img": "img/productos/acetato-01-2.webp",
+    "frente": "img/probador/acetato-01-2.webp"
    },
    {
     "nombre": "Negro",
     "hex": "#222941",
-    "img": "img/productos/acetato-01-3.webp"
+    "img": "img/productos/acetato-01-3.webp",
+    "frente": "img/probador/acetato-01-3.webp"
    }
   ]
  },
@@ -47,17 +50,20 @@ window.PRODUCTOS = [
    {
     "nombre": "Negro",
     "hex": "#181818",
-    "img": "img/productos/acetato-05-1.webp"
+    "img": "img/productos/acetato-05-1.webp",
+    "frente": "img/probador/acetato-05-1.webp"
    },
    {
     "nombre": "Burdeo",
     "hex": "#530d13",
-    "img": "img/productos/acetato-05-2.webp"
+    "img": "img/productos/acetato-05-2.webp",
+    "frente": "img/probador/acetato-05-2.webp"
    },
    {
     "nombre": "Negro 2",
     "hex": "#2e311c",
-    "img": "img/productos/acetato-05-3.webp"
+    "img": "img/productos/acetato-05-3.webp",
+    "frente": "img/probador/acetato-05-3.webp"
    }
   ]
  },
@@ -76,22 +82,26 @@ window.PRODUCTOS = [
    {
     "nombre": "Negro",
     "hex": "#2f2f2f",
-    "img": "img/productos/acetato-09-1.webp"
+    "img": "img/productos/acetato-09-1.webp",
+    "frente": "img/probador/acetato-09-1.webp"
    },
    {
     "nombre": "Gris",
     "hex": "#936060",
-    "img": "img/productos/acetato-09-2.webp"
+    "img": "img/productos/acetato-09-2.webp",
+    "frente": "img/probador/acetato-09-2.webp"
    },
    {
     "nombre": "Negro 2",
     "hex": "#3d223f",
-    "img": "img/productos/acetato-09-3.webp"
+    "img": "img/productos/acetato-09-3.webp",
+    "frente": "img/probador/acetato-09-3.webp"
    },
    {
     "nombre": "Verde agua",
     "hex": "#6cc789",
-    "img": "img/productos/acetato-09-4.webp"
+    "img": "img/productos/acetato-09-4.webp",
+    "frente": "img/probador/acetato-09-4.webp"
    }
   ]
  },
@@ -110,22 +120,26 @@ window.PRODUCTOS = [
    {
     "nombre": "Café",
     "hex": "#76343c",
-    "img": "img/productos/acetato-11-1.webp"
+    "img": "img/productos/acetato-11-1.webp",
+    "frente": "img/probador/acetato-11-1.webp"
    },
    {
     "nombre": "Negro",
     "hex": "#190e16",
-    "img": "img/productos/acetato-11-2.webp"
+    "img": "img/productos/acetato-11-2.webp",
+    "frente": "img/probador/acetato-11-2.webp"
    },
    {
     "nombre": "Carey",
     "hex": "#642e33",
-    "img": "img/productos/acetato-11-3.webp"
+    "img": "img/productos/acetato-11-3.webp",
+    "frente": "img/probador/acetato-11-3.webp"
    },
    {
     "nombre": "Verde",
     "hex": "#274d5b",
-    "img": "img/productos/acetato-11-4.webp"
+    "img": "img/productos/acetato-11-4.webp",
+    "frente": "img/probador/acetato-11-4.webp"
    }
   ]
  },
@@ -144,7 +158,8 @@ window.PRODUCTOS = [
    {
     "nombre": "Varios colores",
     "hex": null,
-    "img": "img/productos/ninoflex-01.webp"
+    "img": "img/productos/ninoflex-01.webp",
+    "frente": "img/probador/ninoflex-01-1.webp"
    }
   ]
  },
@@ -163,7 +178,8 @@ window.PRODUCTOS = [
    {
     "nombre": "Varios colores",
     "hex": null,
-    "img": "img/productos/nino-01.webp"
+    "img": "img/productos/nino-01.webp",
+    "frente": "img/probador/nino-01-1.webp"
    }
   ]
  },
@@ -182,7 +198,8 @@ window.PRODUCTOS = [
    {
     "nombre": "Varios colores",
     "hex": null,
-    "img": "img/productos/ninometal-01.webp"
+    "img": "img/productos/ninometal-01.webp",
+    "frente": "img/probador/ninometal-01-1.webp"
    }
   ]
  },

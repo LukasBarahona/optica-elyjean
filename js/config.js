@@ -5,6 +5,8 @@ window.CONFIG = {
   // Número de WhatsApp en formato internacional, sin + ni espacios (PENDIENTE: número real)
   whatsapp: '56999999999',
   telefonoVisible: '+569 9999 9999',
+  // PENDIENTE: correo real que recibirá los reclamos
+  correo: 'contacto@opticaselyjean.cl',
 
   // PENDIENTE: direcciones y horarios reales de las dos tiendas
   tiendas: [

@@ -36,30 +36,6 @@
     beats(p, el, clamp, '.armar__beat');
   }, el => { el.querySelector('.stage').removeAttribute('style'); limpiar('.armar__beat,[data-tramo]')(el); });
 
-  /* WIPE — capas que se revelan con un barrido y una guía de color que acompaña el borde.
-     La misma curva y duración para cada cambio. */
-  S.register('wipe', (p, el, { range, clamp }) => {
-    const layers = [...el.querySelectorAll('[data-wipe-layer]')];
-    const seam = el.querySelector('[data-wipe-seam]');
-    const tracks = [...el.querySelectorAll('[data-tramo]')];
-    const steps = layers.length - 1;
-    if (steps < 1) return;
-    const t = clamp(p / 0.92);
-    const w = layers.map((_, i) => i === 0 ? 1 : range(t, (i - 1 + 0.12) / steps, (i - 0.12) / steps));
-    let active = 0, activeWipe = 0;
-    layers.forEach((layer, i) => {
-      const right = (1 - w[i]) * 100, left = (w[i + 1] ?? 0) * 100;
-      layer.style.clipPath = `inset(0 ${right.toFixed(2)}% 0 ${left.toFixed(2)}%)`;
-      if (i > 0 && w[i] > 0 && w[i] < 1) { active = i; activeWipe = w[i]; }
-    });
-    if (seam) {
-      seam.style.left = `${(activeWipe * 100).toFixed(2)}%`;
-      seam.style.opacity = active ? (Math.sin(activeWipe * Math.PI) ** 2).toFixed(3) : '0';
-    }
-    // Un tramo por capa: el primero lleno desde el inicio.
-    tracks.forEach((tr, i) => tr.style.setProperty('--fill', (i === 0 ? 1 : w[i]).toFixed(3)));
-  }, el => el.querySelectorAll('[data-wipe-layer],[data-wipe-seam],[data-tramo]').forEach(n => n.removeAttribute('style')));
-
   /* LÍNEA DE TIEMPO — la línea se dibuja y cada hito aparece en su tramo; al final, el sello. */
   S.register('linea', (p, el, { range, clamp }) => {
     const t = clamp(p / 0.9);

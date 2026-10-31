@@ -3,7 +3,7 @@
   'use strict';
   const { esc, tarjeta } = window.App;
   const P = window.PRODUCTOS;
-  const NOMBRES = { categoria: { adultos: 'Ópticos adultos', ninos: 'Niños', sol: 'Sol' } };
+  const NOMBRES = { categoria: { adultos: 'Ópticos adultos', ninos: 'Infantil', sol: 'Sol' } };
   const GRUPOS = ['categoria', 'forma', 'material', 'publico'];
   const URLP = new URLSearchParams(location.search);
   const estado = {
@@ -64,7 +64,7 @@
 
     // Título según categoría
     const cats = [...estado.filtros.categoria];
-    const titulo = cats.length === 1 ? { adultos: 'Marcos ópticos', ninos: 'Marcos para niños', sol: 'Lentes de sol' }[cats[0]] : 'Todos los marcos';
+    const titulo = cats.length === 1 ? { adultos: 'Marcos ópticos', ninos: 'Marcos infantiles', sol: 'Lentes de sol' }[cats[0]] : 'Todos los marcos';
     document.getElementById('tituloCat').textContent = estado.q ? `Resultados para “${estado.q}”` : titulo;
     document.getElementById('migaCat').textContent = titulo;
 

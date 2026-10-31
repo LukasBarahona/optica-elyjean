@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Nosotros | Ópticas Elyjean</title>
+  <meta name="description" content="Conoce Ópticas Elyjean: misión, visión, valores, nuestras 2 tiendas, datos de contacto y soporte al cliente.">
+  <link rel="icon" href="img/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/estilos.css?v=1.4">
+  <link rel="stylesheet" href="css/tienda.css?v=1.4">
+</head>
+<body>
+  <div id="app-header"></div>
+
+  <main>
+    <section class="pagina-cabecera">
+      <div class="contenedor">
+        <p class="migas"><a href="index.html">Inicio</a> / Nosotros</p>
+        <h1>Nosotros</h1>
+        <p>Más de 10 años cuidando la visión de familias y trabajadores.</p>
+      </div>
+    </section>
+
+    <!-- PENDIENTE: misión, visión y valores son una propuesta; confirmar los textos con el negocio -->
+    <section class="seccion">
+      <div class="contenedor nosotros__grid">
+        <article class="nosotros__tarjeta">
+          <h2>Misión</h2>
+          <p>Cuidar la visión de las personas con atención profesional, lentes con garantía y un trato cercano, tanto en nuestras tiendas como en cada empresa que visitamos.</p>
+        </article>
+        <article class="nosotros__tarjeta">
+          <h2>Visión</h2>
+          <p>Ser la óptica de confianza de las familias y empresas, acercando el cuidado visual a todas las personas que lo necesitan.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="seccion seccion--suave">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <span class="etiqueta">Lo que nos mueve</span>
+          <h2>Nuestros valores</h2>
+        </div>
+        <div class="valores">
+          <article class="valor"><h3>Cercanía</h3><p>Te escuchamos y te explicamos tu receta con palabras simples.</p></article>
+          <article class="valor"><h3>Profesionalismo</h3><p>Cuidamos cada examen visual y cada par de lentes que entregamos.</p></article>
+          <article class="valor"><h3>Transparencia</h3><p>Precios claros y recomendaciones según lo que realmente necesitas.</p></article>
+          <article class="valor"><h3>Compromiso</h3><p>Respondemos por nuestros lentes con garantía, también después de la entrega.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="tiendas">
+      <div class="contenedor">
+        <div class="seccion__cabecera">
+          <span class="etiqueta">Nuestras tiendas</span>
+          <h2>Visítanos o retira tu pedido</h2>
+        </div>
+        <div class="tiendas__grid" id="tiendasGrid"></div>
+      </div>
+    </section>
+
+    <section class="seccion contacto" id="soporte">
+      <div class="contenedor contacto__grid">
+        <div class="contacto__info">
+          <span class="etiqueta etiqueta--blanca">Contacto y soporte al cliente</span>
+          <h2>¿Tuviste un problema con tu compra?</h2>
+          <p>Cuéntanos qué pasó. Recibimos reclamos, cambios, garantías y consultas por tu pedido.</p>
+          <ul class="contacto__datos">
+            <li><span>Teléfono / WhatsApp</span><a href="tel:+56999999999" data-tel><span data-tel-texto style="all:unset">+569 9999 9999</span></a></li>
+          </ul>
+        </div>
+        <form class="formulario" id="formSoporte" novalidate>
+          <div class="campo"><label for="sNombre">Nombre</label><input id="sNombre" name="nombre" type="text" autocomplete="name" required placeholder="Tu nombre"></div>
+          <div class="campo"><label for="sTipo">¿En qué te ayudamos?</label>
+            <select id="sTipo" name="tipo">
+              <option>Reclamo</option>
+              <option>Cambio o devolución</option>
+              <option>Garantía de mis lentes</option>
+              <option>Estado de mi pedido</option>
+              <option>Otra consulta</option>
+            </select>
+          </div>
+          <div class="campo"><label for="sPedido">N.º de pedido o boleta (opcional)</label><input id="sPedido" name="pedido" type="text"></div>
+          <div class="campo"><label for="sMensaje">Cuéntanos qué pasó</label><textarea id="sMensaje" name="mensaje" rows="4" required></textarea></div>
+          <button type="submit" class="btn btn--rojo btn--ancho">Enviar por WhatsApp</button>
+          <p class="error" id="formError" role="alert"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <div id="app-footer"></div>
+
+  <script src="js/config.js?v=1.4"></script>
+  <script src="js/app.js?v=1.4"></script>
+  <script src="js/nosotros.js?v=1.4"></script>
+</body>
+</html>

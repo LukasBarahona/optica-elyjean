@@ -1,7 +1,7 @@
-/* Portada: carrusel, destacados, filtros de cristales, tiendas y formulario. */
+/* Portada: carrusel, destacados, comparador y filtros de cristales, y formulario. */
 (() => {
   'use strict';
-  const { esc, waLink, tarjeta, C } = window.App;
+  const { waLink, tarjeta, C } = window.App;
 
   /* Teléfono desde la configuración */
   document.querySelectorAll('[data-tel]').forEach(a => { a.href = `tel:+${C.whatsapp}`; });
@@ -34,7 +34,7 @@
   /* Destacados con pestañas */
   const fila = document.getElementById('filaDestacados');
   const verTodos = document.getElementById('verTodos');
-  const textos = { adultos: 'Ver todos los marcos ópticos', ninos: 'Ver todos los marcos de niños', sol: 'Ver todos los lentes de sol' };
+  const textos = { adultos: 'Ver todos los marcos ópticos', ninos: 'Ver todos los marcos infantiles', sol: 'Ver todos los lentes de sol' };
   function mostrar(cat) {
     const lista = window.PRODUCTOS.filter(p => p.categoria === cat);
     lista.sort((a, b) => (b.etiqueta ? 1 : 0) - (a.etiqueta ? 1 : 0));
@@ -49,21 +49,29 @@
   }));
   mostrar('adultos');
 
+  /* Comparador: sin lentes → con lentes → tipo de cristal */
+  const vision = document.querySelector('.vision');
+  const subVision = document.getElementById('visionSub');
+  const estadoVision = { modo: 'sin', cristal: 'foto' };
+  function verVision() {
+    const { modo, cristal } = estadoVision;
+    const activa = modo === 'con' ? cristal : 'sin';
+    vision.querySelectorAll('[data-modo]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.modo === modo)));
+    vision.querySelectorAll('[data-cristal]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cristal === cristal)));
+    vision.querySelectorAll('[data-panel]').forEach(n => n.classList.toggle('is-activa', n.dataset.panel === activa));
+    vision.querySelectorAll('[data-info]').forEach(n => { n.hidden = n.dataset.info !== activa; });
+    subVision.style.visibility = modo === 'con' ? '' : 'hidden';  // conserva su espacio para que el texto no salte
+  }
+  vision.querySelectorAll('[data-modo]').forEach(b => b.addEventListener('click', () => { estadoVision.modo = b.dataset.modo; verVision(); }));
+  vision.querySelectorAll('[data-cristal]').forEach(b => b.addEventListener('click', () => { estadoVision.cristal = b.dataset.cristal; verVision(); }));
+  verVision();
+
   /* Filtro de tipos de cristal */
   document.querySelectorAll('[data-filtro]').forEach(b => b.addEventListener('click', () => {
     document.querySelectorAll('[data-filtro]').forEach(x => x.setAttribute('aria-selected', String(x === b)));
     const f = b.dataset.filtro;
     document.querySelectorAll('.lente').forEach(l => { l.hidden = !(f === 'todos' || l.dataset.tipo === f || l.dataset.tipo === 'todos'); });
   }));
-
-  /* Tiendas */
-  document.getElementById('tiendasGrid').innerHTML = C.tiendas.map(t => `
-    <article class="tienda">
-      <h3>${esc(t.nombre)}</h3>
-      <p>${esc(t.direccion)}</p>
-      <p>${esc(t.horario)}</p>
-      <p class="pendiente">Dirección pendiente de confirmar</p>
-    </article>`).join('');
 
   /* Formulario → WhatsApp */
   const form = document.getElementById('formContacto');

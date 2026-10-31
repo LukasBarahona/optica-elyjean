@@ -34,14 +34,14 @@
       <header class="header">
         <div class="contenedor header__inner">
           <button class="header__menu" id="menuBtn" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav"><span></span><span></span><span></span></button>
-          <a href="index.html" class="header__logo" aria-label="${esc(C.marca)}, inicio"><img src="img/logo.png" alt="${esc(C.marca)}" width="56" height="56"></a>
+          <a href="index.html" class="header__logo" aria-label="${esc(C.marca)}, inicio"><img src="img/logo.png" alt="" width="52" height="52"><span class="header__marca">Elyjean</span></a>
           <nav class="nav" id="nav" aria-label="Principal">
             <a href="catalogo.html?cat=adultos">Ópticos</a>
-            <a href="catalogo.html?cat=ninos">Niños</a>
+            <a href="catalogo.html?cat=ninos">Infantil</a>
             <a href="catalogo.html?cat=sol">Sol</a>
-            <a href="${ancla('consulta-gratis')}">Consulta gratis</a>
+            <a href="${ancla('contacto')}">Agendar consulta</a>
             <a href="${ancla('empresas')}">Empresas</a>
-            <a href="${ancla('tiendas')}">Tiendas</a>
+            <a href="nosotros.html">Nosotros</a>
           </nav>
           <form class="buscador" action="catalogo.html" role="search">
             <label class="sr-only" for="q">Buscar marcos</label>
@@ -70,16 +70,18 @@
         <div>
           <h4>Tienda</h4>
           <a href="catalogo.html?cat=adultos">Lentes ópticos</a>
-          <a href="catalogo.html?cat=ninos">Lentes para niños</a>
+          <a href="catalogo.html?cat=ninos">Lentes infantiles</a>
           <a href="catalogo.html?cat=sol">Lentes de sol</a>
           <a href="carro.html">Mi carro</a>
         </div>
         <div>
           <h4>Servicios</h4>
-          <a href="${ancla('consulta-gratis')}">Consulta gratis</a>
+          <a href="${ancla('contacto')}">Agendar consulta</a>
           <a href="${ancla('empresas')}">Operativos en empresas</a>
           <a href="${ancla('reembolso')}">Reembolso y cuotas</a>
           <a href="${ancla('preguntas')}">Preguntas frecuentes</a>
+          <a href="nosotros.html">Nosotros</a>
+          <a href="nosotros.html#soporte">Soporte al cliente</a>
         </div>
         <div>
           <h4>Contacto</h4>
@@ -108,6 +110,8 @@
     if (!btn || !nav) return;
     const cerrar = () => { nav.classList.remove('is-open'); btn.setAttribute('aria-expanded', 'false'); document.body.classList.remove('menu-abierto'); };
     btn.addEventListener('click', () => {
+      // El menú parte bajo el encabezado, también en páginas sin motor de escenas.
+      document.documentElement.style.setProperty('--header-h', `${document.querySelector('[data-header]').offsetHeight}px`);
       const abierto = nav.classList.toggle('is-open');
       btn.setAttribute('aria-expanded', String(abierto));
       document.body.classList.toggle('menu-abierto', abierto);

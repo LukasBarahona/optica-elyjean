@@ -71,46 +71,6 @@
   .armar__chip,.entrega-chips span{font-size:11px;padding:5px 10px}
 }
 
-/* ============ 06 · Antes / después (barrido) ============ */
-.vision{background:var(--azul-900);color:#fff}
-.vision .stage{display:grid;grid-template-rows:auto 1fr;gap:clamp(16px,2.5vw,28px);padding:clamp(24px,4vw,48px) var(--pad)}
-.vision__cabecera{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap}
-.vision__cabecera h2{color:#fff}
-.vision__cabecera p{margin:0;max-width:44ch;opacity:.85}
-.vision__marco{position:relative;min-height:0;display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-.vista{position:relative;border-radius:24px;overflow:hidden;min-height:300px;display:grid;place-items:center;padding:28px;background:#fff;color:var(--ink)}
-.vista svg.cartilla{width:min(78%,420px);height:auto;max-height:100%}
-.vista figcaption{position:absolute;left:18px;bottom:16px;right:18px;display:flex;flex-direction:column;gap:2px}
-.vista figcaption strong{font-size:clamp(16px,1.6vw,22px)}
-.vista figcaption span{font-size:14px;opacity:.8}
-.vista--borrosa svg.cartilla{filter:blur(5px)}
-.vista--foto{background:radial-gradient(circle at 80% 15%,#cfe9f8 0,#9cc9e4 25%,#5b7f97 60%,#2f4655 100%);color:#fff}
-.vista--foto::before{content:"";position:absolute;inset:0;background:#0e2a3b;opacity:.45}
-.vista--foto svg.cartilla{position:relative;z-index:1}
-.vista--foto figcaption{z-index:2}
-.vista--foto .sol{position:absolute;top:22px;right:26px;width:54px;height:54px;border-radius:50%;background:#fff;box-shadow:0 0 0 10px #ffffff33,0 0 0 22px #ffffff1a;z-index:1}
-.vista--azul{background:var(--azul-50)}
-.vista--azul .rayos{position:absolute;inset:0;background:repeating-linear-gradient(115deg,#38a9e138 0 10px,transparent 10px 34px);-webkit-mask:linear-gradient(90deg,#000 0 30%,transparent 48%);mask:linear-gradient(90deg,#000 0 30%,transparent 48%)}
-.vista--azul .filtro{position:absolute;top:8%;bottom:8%;left:40%;width:6px;border-radius:3px;background:var(--azul)}
-.vista--azul svg.cartilla,.vista--azul figcaption{position:relative;z-index:1}
-.vista--azul figcaption{position:absolute}
-.vision__guia{display:none}
-.motion-on .vision__marco{display:block}
-.motion-on .vision__marco .vista{position:absolute;inset:0;min-height:0}
-.motion-on .vision__marco .vista:not(:first-of-type){clip-path:inset(0 100% 0 0)}
-.motion-on .vision__guia{display:block;position:absolute;top:0;bottom:0;width:3px;margin-left:-1px;background:var(--azul);opacity:0;box-shadow:0 0 22px #38a9e1aa;z-index:5}
-.vision .tramos{display:none}
-.motion-on .vision .tramos{display:flex;margin-top:0}
-.vision .tramo{color:#ffffffb3;border-color:#ffffff2e}
-.motion-on .vision .stage{grid-template-rows:auto 1fr auto}
-@media (max-width:700px){
-  .vision__marco{grid-template-columns:1fr}
-  .vision__cabecera p{font-size:15px}
-  .vista{padding:20px 16px 72px}
-  .vista svg.cartilla{width:min(86%,320px)}
-  .vista--foto .sol{width:36px;height:36px;top:16px;right:16px}
-}
-
 /* ============ 09 · Operativo en tu empresa (línea de tiempo) ============ */
 .operativo{background:#fff}
 .operativo .stage{display:grid;align-content:center;gap:clamp(24px,4vw,48px);padding:clamp(24px,4vw,48px) var(--pad)}

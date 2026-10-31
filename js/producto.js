@@ -4,7 +4,7 @@
   const { fmt, esc, Carro, C } = window.App;
   const id = new URLSearchParams(location.search).get('id');
   const p = window.PRODUCTOS.find(x => x.id === id) || window.PRODUCTOS[0];
-  const CATS = { adultos: 'Marcos ópticos', ninos: 'Marcos para niños', sol: 'Lentes de sol' };
+  const CATS = { adultos: 'Marcos ópticos', ninos: 'Marcos infantiles', sol: 'Lentes de sol' };
   const $ = s => document.querySelector(s);
 
   const st = {

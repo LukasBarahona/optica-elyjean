@@ -5,38 +5,6 @@
   const S = window.Scrolltelling;
   if (!S) return;
 
-  /* Relevo de textos: un bloque visible a la vez, con cruce suave. Mismo cálculo en todas las escenas. */
-  function beats(p, el, clamp, selector) {
-    const items = [...el.querySelectorAll(selector)];
-    const tracks = [...el.querySelectorAll('[data-tramo]')];
-    const n = items.length;
-    const pos = clamp(p / 0.92) * n;            // el último tramo queda visible antes de soltar la escena
-    items.forEach((b, i) => {
-      const into = pos - i;
-      let v = into < 0.5 ? clamp((into + 0.15) / 0.3) : clamp((1.15 - into) / 0.3);
-      if (i === 0 && into < 0.5) v = 1;
-      if (i === n - 1 && into >= 0.5) v = 1;
-      b.style.opacity = v.toFixed(3);
-      b.style.transform = `translate3d(0,${((1 - v) * 24).toFixed(1)}px,0)`;
-      b.toggleAttribute('aria-hidden', v < 0.5);
-    });
-    tracks.forEach((t, i) => t.classList.toggle('is-hecho', pos >= i));
-  }
-  const limpiar = sel => el => el.querySelectorAll(sel).forEach(n => { n.removeAttribute('style'); n.removeAttribute('aria-hidden'); });
-
-  /* ARMAR — el lente se arma por capas: marco → cristal → tratamientos → receta → entrega. */
-  S.register('armar', (p, el, { clamp, range }) => {
-    const stage = el.querySelector('.stage');
-    const t = clamp(p / 0.92), q = 1 / 5;          // cinco tramos iguales
-    stage.style.setProperty('--marco', range(t, 0.02, q * 0.85).toFixed(3));
-    stage.style.setProperty('--cristal', range(t, q, q * 1.85).toFixed(3));
-    stage.style.setProperty('--trat', range(t, q * 2, q * 2.85).toFixed(3));
-    stage.style.setProperty('--receta', range(t, q * 3, q * 3.85).toFixed(3));
-    stage.style.setProperty('--entrega', range(t, q * 4, q * 4.85).toFixed(3));
-    stage.style.setProperty('--avance', clamp(t * 5 / 4).toFixed(3));   // la línea llega a Entrega al empezar su tramo
-    beats(p, el, clamp, '.armar__beat');
-  }, el => { el.querySelector('.stage').removeAttribute('style'); limpiar('.armar__beat,[data-tramo]')(el); });
-
   /* LÍNEA DE TIEMPO — la línea se dibuja y cada hito aparece en su tramo; al final, el sello. */
   S.register('linea', (p, el, { range, clamp }) => {
     const t = clamp(p / 0.9);

@@ -73,7 +73,7 @@ button,input,select,textarea{font:inherit;color:inherit}
 .anuncio{background:var(--azul-900);color:#fff;font-size:13px;height:34px;position:relative;overflow:hidden;text-align:center}
 .anuncio__msg{position:absolute;inset:0;margin:0;line-height:34px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding:0 12px;opacity:0;transform:translateY(8px);transition:opacity .5s,transform .5s var(--ease)}
 .anuncio__msg.is-active{opacity:1;transform:none}
-.header__inner{display:flex;align-items:center;gap:20px;height:72px}
+.header__inner{display:flex;align-items:center;gap:20px;height:72px;max-width:none;padding-inline:clamp(12px,1.6vw,28px)}
 .header__logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
 .header__logo img{width:52px;height:52px}
 .header__marca{font-size:24px;font-weight:800;letter-spacing:-.02em;color:var(--azul-700)}
@@ -98,7 +98,7 @@ button,input,select,textarea{font:inherit;color:inherit}
   .header__logo{gap:8px}
   .header__logo img{width:44px;height:44px}
   .header__marca{font-size:20px}
-  .header__menu{display:flex}
+  .header__menu{display:flex;order:1}
   .nav{position:fixed;left:0;right:0;top:var(--header-h);bottom:0;background:#fff;flex-direction:column;gap:0;margin:0;padding:12px var(--pad) 40px;transform:translateX(-100%);transition:transform .35s var(--ease);overflow:auto;z-index:99}
   .nav.is-open{transform:none}
   .nav a{font-size:20px;padding:16px 0;border-bottom:1px solid var(--line)}

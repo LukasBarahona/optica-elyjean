@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css?v=1.5">
-  <link rel="stylesheet" href="css/escenas.css?v=1.5">
+  <link rel="stylesheet" href="css/estilos.css?v=1.6">
+  <link rel="stylesheet" href="css/escenas.css?v=1.6">
 </head>
 <body>
 
@@ -52,7 +52,7 @@
               <p>Elige el marco, el cristal y los tratamientos. Sube tu receta o escribe tus grados, y recíbelos en tu casa o retíralos en tienda.</p>
               <div class="slide__acciones">
                 <a href="catalogo.html" class="btn btn--rojo">Armar mis lentes</a>
-                <a href="#armar" class="btn btn--linea">Cómo funciona</a>
+                <a href="#preguntas" class="btn btn--linea">Preguntas frecuentes</a>
               </div>
             </div>
             <div class="slide__media">
@@ -131,72 +131,6 @@
             <a href="catalogo.html?cat=sol" class="btn btn--blanco">Elegir lentes de sol</a>
           </div>
           <img src="img/probador/sol-07-1.webp" alt="Lentes de sol del probador virtual" loading="lazy">
-        </div>
-      </div>
-    </section>
-
-    <!-- 05 ★ Arma tus lentes (escena anclada por capas) -->
-    <section class="armar" id="armar" data-scene="pin" data-handler="armar" style="--length:460svh" aria-labelledby="t-armar">
-      <div class="stage">
-        <div class="armar__visual" aria-hidden="true">
-          <svg class="armar__svg" viewBox="0 0 440 220">
-            <defs>
-              <linearGradient id="gradCristal" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#cfe9f8"/>
-              </linearGradient>
-              <clipPath id="clipLentes">
-                <rect x="36" y="52" width="160" height="116" rx="48"/>
-                <rect x="244" y="52" width="160" height="116" rx="48"/>
-              </clipPath>
-            </defs>
-            <rect class="lente-fill" x="36" y="52" width="160" height="116" rx="48"/>
-            <rect class="lente-fill" x="244" y="52" width="160" height="116" rx="48"/>
-            <g clip-path="url(#clipLentes)">
-              <rect class="tinte" x="0" y="0" width="440" height="220"/>
-              <polygon class="brillo-ar" points="150,20 186,20 126,200 90,200" opacity=".75"/>
-            </g>
-            <rect class="rim" pathLength="1" x="36" y="52" width="160" height="116" rx="48"/>
-            <rect class="rim" pathLength="1" x="244" y="52" width="160" height="116" rx="48"/>
-            <path class="puente" pathLength="1" d="M196 94 Q220 70 244 94"/>
-            <path class="patilla" pathLength="1" d="M36 86 L10 74"/>
-            <path class="patilla" pathLength="1" d="M404 86 L430 74"/>
-          </svg>
-          <div class="armar__chips">
-            <span class="armar__chip">Antirreflejo</span>
-            <span class="armar__chip">Filtro luz azul</span>
-          </div>
-          <div class="receta-card">
-            <h4>Tu receta</h4>
-            <table>
-              <thead><tr><th></th><th>ESF</th><th>CIL</th><th>EJE</th></tr></thead>
-              <tbody>
-                <tr><td>OD</td><td>-1,25</td><td>-0,50</td><td>90°</td></tr>
-                <tr><td>OI</td><td>-1,00</td><td>-0,75</td><td>85°</td></tr>
-              </tbody>
-            </table>
-          </div>
-          <div class="entrega-chips">
-            <span>A domicilio</span>
-            <span>Retiro en tienda</span>
-            <span>En tu empresa</span>
-          </div>
-        </div>
-
-        <div class="armar__texto">
-          <span class="etiqueta" id="t-armar">Cómo comprar online</span>
-          <div class="armar__beats">
-            <div class="armar__beat"><span class="num">01</span><h3>Elige tu marco</h3><p>Modelos ópticos, infantiles y de sol. Filtra por forma y material.</p></div>
-            <div class="armar__beat"><span class="num">02</span><h3>Elige tu cristal</h3><p>Monofocal, bifocal, multifocal, de descanso o de sol con aumento.</p></div>
-            <div class="armar__beat"><span class="num">03</span><h3>Suma tratamientos</h3><p>Antirreflejo, filtro luz azul, fotocromático o cristal adelgazado.</p></div>
-            <div class="armar__beat"><span class="num">04</span><h3>Adjunta tu receta</h3><p>Sube una foto o PDF, o escribe tus grados. ¿No tienes receta? Agenda tu consulta: es gratis si compras tus lentes.</p></div>
-            <div class="armar__beat"><span class="num">05</span><h3>Recíbelos</h3><p>Envío a domicilio, retiro en una de nuestras 2 tiendas o entrega en tu empresa.</p></div>
-          </div>
-          <a href="catalogo.html" class="btn btn--rojo armar__cta">Armar mis lentes</a>
-        </div>
-
-        <div class="progreso" aria-hidden="true">
-          <span class="progreso__linea"></span>
-          <span class="progreso__paso" data-tramo>Marco</span><span class="progreso__paso" data-tramo>Cristal</span><span class="progreso__paso" data-tramo>Tratamientos</span><span class="progreso__paso" data-tramo>Receta</span><span class="progreso__paso" data-tramo>Entrega</span>
         </div>
       </div>
     </section>
@@ -439,11 +373,11 @@
 
   <div id="app-footer"></div>
 
-  <script src="js/config.js?v=1.5"></script>
-  <script src="js/productos.js?v=1.5"></script>
-  <script src="js/app.js?v=1.5"></script>
-  <script src="js/scroll-engine.js?v=1.5"></script>
-  <script src="js/escenas.js?v=1.5"></script>
-  <script src="js/portada.js?v=1.5"></script>
+  <script src="js/config.js?v=1.6"></script>
+  <script src="js/productos.js?v=1.6"></script>
+  <script src="js/app.js?v=1.6"></script>
+  <script src="js/scroll-engine.js?v=1.6"></script>
+  <script src="js/escenas.js?v=1.6"></script>
+  <script src="js/portada.js?v=1.6"></script>
 </body>
 </html>

@@ -173,10 +173,10 @@ button,input,select,textarea{font:inherit;color:inherit}
 }
 
 /* ============ Qué hacemos (frame con foto) ============ */
-.empresa{position:relative;min-height:var(--frame-completo);display:grid;align-items:end;color:#fff;background:var(--azul-900);overflow:hidden}
+.empresa{position:relative;min-height:var(--frame);display:grid;align-items:end;color:#fff;background:var(--azul-900);overflow:hidden}
 .empresa__foto{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%}
 .empresa::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0b223066 0,#0b2230c7 45%,#0b2230e0 100%)}
-.empresa__contenido{position:relative;z-index:1;text-align:center;max-width:1560px;padding-block:calc(var(--header-h) + 24px) clamp(32px,6svh,64px)}
+.empresa__contenido{position:relative;z-index:1;text-align:center;padding-block:clamp(32px,6svh,64px)}
 .empresa__contenido h2{font-size:clamp(28px,min(3.6vw,7svh),52px);max-width:22ch;margin-inline:auto}
 .empresa__contenido p{max-width:64ch;margin:clamp(12px,2.5svh,22px) auto 0;font-size:clamp(15px,min(1.3vw,2.6svh),19px);opacity:.95}
 .empresa__puntos{list-style:none;margin:clamp(20px,5svh,44px) 0 0;padding:0;display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -185,7 +185,8 @@ button,input,select,textarea{font:inherit;color:inherit}
 .empresa__puntos span{font-size:14px;line-height:1.25}
 .empresa__puntos small{display:block;color:var(--muted);font-size:12px}
 .empresa__puntos strong{font-weight:700}
-.empresa--lateral{align-items:center}
+.empresa--lateral{align-items:center;min-height:var(--frame-completo)}
+.empresa--lateral .empresa__contenido{padding-top:calc(var(--header-h) + 24px)}
 .empresa--lateral .empresa__foto{object-position:50% 30%}
 .empresa--lateral::after{background:linear-gradient(90deg,#0b2230e6 0,#0b2230b3 40%,#0b223026 75%)}
 .empresa--lateral .empresa__contenido{text-align:left}
@@ -197,7 +198,7 @@ button,input,select,textarea{font:inherit;color:inherit}
   .empresa{min-height:100lvh}
   .empresa__foto{object-position:24% 30%}
   .empresa::after{background:linear-gradient(180deg,#0b223000 0,#0b223000 28%,#0b2230b8 52%,#0b2230f0 100%)}
-  .empresa__contenido{padding-bottom:calc(100lvh - 100svh + 18px)}
+  .empresa__contenido{padding-top:calc(var(--header-h) + 16px);padding-bottom:calc(100lvh - 100svh + 18px)}
   .empresa__contenido h2{font-size:clamp(23px,6.6vw,30px)}
   .empresa__contenido p{font-size:14px;line-height:1.45;margin-top:8px}
   .empresa__puntos{grid-template-columns:repeat(2,1fr);gap:8px;margin-top:14px}
@@ -207,7 +208,7 @@ button,input,select,textarea{font:inherit;color:inherit}
   .empresa__puntos small{font-size:10px}
   .empresa--lateral .empresa__foto{object-position:70% 30%}
   .empresa--lateral::after{background:linear-gradient(180deg,#0b223000 0,#0b223000 45%,#0b2230d9 100%)}
-  .empresa--lateral{align-items:end}
+  .empresa--lateral{align-items:end;min-height:100lvh}
 }
 
 /* ============ Pestañas y carrusel de productos ============ */

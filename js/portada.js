@@ -12,6 +12,9 @@
   const puntos = document.querySelector('.hero__puntos');
   let actual = 0, timer;
   const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const video = document.querySelector('.slide__video');
+  const archivoVideo = C.videoInicio[matchMedia('(max-width:820px)').matches ? 'vertical' : 'horizontal'];
+  if (archivoVideo && !quieto) { video.src = archivoVideo; video.preload = 'auto'; }
   slides.forEach((_, i) => {
     const b = document.createElement('button');
     b.setAttribute('role', 'tab');
@@ -23,6 +26,7 @@
     actual = (i + slides.length) % slides.length;
     slides.forEach((s, k) => { s.classList.toggle('is-active', k === actual); s.inert = k !== actual; });
     [...puntos.children].forEach((b, k) => b.setAttribute('aria-selected', String(k === actual)));
+    if (video.src) { if (actual === 0) video.play().catch(() => {}); else video.pause(); }
   }
   function reiniciar() { clearInterval(timer); if (!quieto) timer = setInterval(() => ir(actual + 1), 6500); }
   document.querySelectorAll('.hero__flecha').forEach(b => b.addEventListener('click', () => { ir(actual + Number(b.dataset.dir)); reiniciar(); }));

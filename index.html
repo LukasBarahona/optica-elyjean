@@ -13,10 +13,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css?v=1.12">
-  <link rel="stylesheet" href="css/escenas.css?v=1.12">
+  <link rel="stylesheet" href="css/estilos.css?v=1.14">
+  <link rel="stylesheet" href="css/escenas.css?v=1.14">
 </head>
-<body>
+<body class="con-frame">
 
   <div id="app-header"></div>
 
@@ -26,11 +26,26 @@
     <section class="hero" aria-roledescription="carrusel" aria-label="Destacados">
       <div class="hero__slides">
 
-        <article class="slide is-active" aria-label="1 de 3">
+        <article class="slide slide--video is-active" aria-label="1 de 3">
+          <video class="slide__video" poster="img/nosotros-lentes.webp" muted loop playsinline preload="none" aria-hidden="true"></video>
+          <div class="contenedor slide__inner">
+            <div class="slide__texto">
+              <span class="etiqueta etiqueta--blanca">Ópticas Elyjean</span>
+              <h1>Lentes hechos para ti <em>con tu receta</em></h1>
+              <p>Marcos ópticos, infantiles y de sol, con la atención cercana de más de 10 años de experiencia.</p>
+              <div class="slide__acciones">
+                <a href="catalogo.html" class="btn btn--rojo">Ver marcos</a>
+                <a href="#contacto" class="btn btn--linea">Agendar consulta</a>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="slide" aria-label="2 de 3">
           <div class="contenedor slide__inner">
             <div class="slide__texto">
               <span class="etiqueta etiqueta--blanca">Promoción permanente</span>
-              <h1>Tu consulta es gratis <em>si te llevas tus lentes</em></h1>
+              <h2>Tu consulta es gratis <em>si te llevas tus lentes</em></h2>
               <p>Examen visual con profesionales. Si compras tus lentes con nosotros, la consulta no tiene costo.</p>
               <div class="slide__acciones">
                 <a href="#contacto" class="btn btn--rojo">Agendar mi consulta</a>
@@ -40,24 +55,6 @@
             <div class="slide__media">
               <div class="burbuja"><img src="img/examen-visual.jpg" alt="Paciente durante un examen visual con montura de prueba" width="570" height="435" fetchpriority="high"></div>
               <div class="sello"><strong>$0</strong><span>consulta</span></div>
-            </div>
-          </div>
-        </article>
-
-        <article class="slide" aria-label="2 de 3">
-          <div class="contenedor slide__inner">
-            <div class="slide__texto">
-              <span class="etiqueta etiqueta--blanca">Compra online</span>
-              <h2>Arma tus lentes <em>desde tu casa</em></h2>
-              <p>Elige el marco, el cristal y los tratamientos. Sube tu receta o escribe tus grados, y recíbelos en tu casa o retíralos en tienda.</p>
-              <div class="slide__acciones">
-                <a href="catalogo.html" class="btn btn--rojo">Armar mis lentes</a>
-                <a href="#preguntas" class="btn btn--linea">Preguntas frecuentes</a>
-              </div>
-            </div>
-            <div class="slide__media">
-              <div class="burbuja"><img src="img/productos/acetato-11-4.webp" alt="Marco de acetato" width="1000" height="667" style="object-fit:contain;padding:12%"></div>
-              <div class="sello sello--blanco"><strong>100%</strong><span>online</span></div>
             </div>
           </div>
         </article>
@@ -367,11 +364,11 @@
 
   <div id="app-footer"></div>
 
-  <script src="js/config.js?v=1.12"></script>
-  <script src="js/productos.js?v=1.12"></script>
-  <script src="js/app.js?v=1.12"></script>
-  <script src="js/scroll-engine.js?v=1.12"></script>
-  <script src="js/escenas.js?v=1.12"></script>
-  <script src="js/portada.js?v=1.12"></script>
+  <script src="js/config.js?v=1.14"></script>
+  <script src="js/productos.js?v=1.14"></script>
+  <script src="js/app.js?v=1.14"></script>
+  <script src="js/scroll-engine.js?v=1.14"></script>
+  <script src="js/escenas.js?v=1.14"></script>
+  <script src="js/portada.js?v=1.14"></script>
 </body>
 </html>

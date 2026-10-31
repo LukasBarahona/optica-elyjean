@@ -33,7 +33,8 @@ window.PRODUCTOS = [
     "img": "img/productos/acetato-01-3.webp",
     "frente": "img/probador/acetato-01-3.webp"
    }
-  ]
+  ],
+  "descripcion": "Marco rectangular de acetato, de líneas simples y pensado para el uso diario. Modelo unisex."
  },
  {
   "id": "acetato-05",
@@ -65,7 +66,8 @@ window.PRODUCTOS = [
     "img": "img/productos/acetato-05-3.webp",
     "frente": "img/probador/acetato-05-3.webp"
    }
-  ]
+  ],
+  "descripcion": "Marco cuadrado de acetato, de aro grueso y presencia marcada. Modelo unisex."
  },
  {
   "id": "acetato-09",
@@ -103,7 +105,8 @@ window.PRODUCTOS = [
     "img": "img/productos/acetato-09-4.webp",
     "frente": "img/probador/acetato-09-4.webp"
    }
-  ]
+  ],
+  "descripcion": "Marco cat-eye de acetato, con la línea superior levantada que estiliza el rostro."
  },
  {
   "id": "acetato-11",
@@ -141,7 +144,8 @@ window.PRODUCTOS = [
     "img": "img/productos/acetato-11-4.webp",
     "frente": "img/probador/acetato-11-4.webp"
    }
-  ]
+  ],
+  "descripcion": "Marco redondo de acetato, de aro firme y estilo clásico. Modelo unisex."
  },
  {
   "id": "ninoflex-01",
@@ -156,12 +160,37 @@ window.PRODUCTOS = [
   "etiqueta": "Flexible",
   "colores": [
    {
-    "nombre": "Varios colores",
-    "hex": null,
-    "img": "img/productos/ninoflex-01.webp",
+    "nombre": "Azul",
+    "hex": "#38A9E1",
+    "img": "img/productos/ninoflex-01-1.webp",
     "frente": "img/probador/ninoflex-01-1.webp"
+   },
+   {
+    "nombre": "Transparente con verde",
+    "hex": "#DCE8EC",
+    "img": "img/productos/ninoflex-01-2.webp",
+    "frente": "img/probador/ninoflex-01-2.webp"
+   },
+   {
+    "nombre": "Rosado",
+    "hex": "#F08DB8",
+    "img": "img/productos/ninoflex-01-3.webp",
+    "frente": "img/probador/ninoflex-01-3.webp"
+   },
+   {
+    "nombre": "Gris con amarillo",
+    "hex": "#55534E",
+    "img": "img/productos/ninoflex-01-4.webp",
+    "frente": "img/probador/ninoflex-01-4.webp"
+   },
+   {
+    "nombre": "Negro con rojo",
+    "hex": "#1C1C1F",
+    "img": "img/productos/ninoflex-01-5.webp",
+    "frente": "img/probador/ninoflex-01-5.webp"
    }
-  ]
+  ],
+  "descripcion": "Marco infantil rectangular de material flexible TR90, con patillas en color de contraste."
  },
  {
   "id": "nino-01",
@@ -169,19 +198,38 @@ window.PRODUCTOS = [
   "nombre": "Infantil YS76817",
   "categoria": "ninos",
   "material": "Inyectado",
-  "forma": "rectangular",
+  "forma": "redondo",
   "publico": "infantil",
   "medidas": null,
   "precio": 24990,
   "etiqueta": null,
   "colores": [
    {
-    "nombre": "Varios colores",
-    "hex": null,
-    "img": "img/productos/nino-01.webp",
+    "nombre": "Negro",
+    "hex": "#1B1B1F",
+    "img": "img/productos/nino-01-1.webp",
     "frente": "img/probador/nino-01-1.webp"
+   },
+   {
+    "nombre": "Transparente con rojo",
+    "hex": "#E3E5E6",
+    "img": "img/productos/nino-01-2.webp",
+    "frente": "img/probador/nino-01-2.webp"
+   },
+   {
+    "nombre": "Turquesa",
+    "hex": "#4FA9A8",
+    "img": "img/productos/nino-01-3.webp",
+    "frente": "img/probador/nino-01-3.webp"
+   },
+   {
+    "nombre": "Azul marino",
+    "hex": "#1F3F6E",
+    "img": "img/productos/nino-01-4.webp",
+    "frente": "img/probador/nino-01-4.webp"
    }
-  ]
+  ],
+  "descripcion": "Marco infantil inyectado de forma redonda, con patillas en dos tonos."
  },
  {
   "id": "ninometal-01",
@@ -196,12 +244,31 @@ window.PRODUCTOS = [
   "etiqueta": null,
   "colores": [
    {
-    "nombre": "Varios colores",
-    "hex": null,
-    "img": "img/productos/ninometal-01.webp",
+    "nombre": "Negro con dorado",
+    "hex": "#2A2A2A",
+    "img": "img/productos/ninometal-01-1.webp",
     "frente": "img/probador/ninometal-01-1.webp"
+   },
+   {
+    "nombre": "Rosa",
+    "hex": "#D9A08E",
+    "img": "img/productos/ninometal-01-2.webp",
+    "frente": "img/probador/ninometal-01-2.webp"
+   },
+   {
+    "nombre": "Plateado con lila",
+    "hex": "#B79AD8",
+    "img": "img/productos/ninometal-01-3.webp",
+    "frente": "img/probador/ninometal-01-3.webp"
+   },
+   {
+    "nombre": "Plateado con azul",
+    "hex": "#3FB2D4",
+    "img": "img/productos/ninometal-01-4.webp",
+    "frente": "img/probador/ninometal-01-4.webp"
    }
-  ]
+  ],
+  "descripcion": "Marco infantil metálico de aro delgado, con patillas de colores y puntas redondeadas."
  },
  {
   "id": "sol-01",
@@ -239,7 +306,8 @@ window.PRODUCTOS = [
     "img": "img/productos/sol-01-4.webp",
     "frente": "img/probador/sol-01-4.webp"
    }
-  ]
+  ],
+  "descripcion": "Lente de sol metálico de forma ovalada, con filtro UV. Modelo unisex."
  },
  {
   "id": "sol-07",
@@ -277,7 +345,8 @@ window.PRODUCTOS = [
     "img": "img/productos/sol-07-4.webp",
     "frente": "img/probador/sol-07-4.webp"
    }
-  ]
+  ],
+  "descripcion": "Lente de sol metálico de forma redonda, con filtro UV. Modelo unisex."
  },
  {
   "id": "sol-10",
@@ -315,6 +384,7 @@ window.PRODUCTOS = [
     "img": "img/productos/sol-10-4.webp",
     "frente": "img/probador/sol-10-4.webp"
    }
-  ]
+  ],
+  "descripcion": "Lente de sol metálico de forma hexagonal, con filtro UV. Modelo unisex."
  }
 ];

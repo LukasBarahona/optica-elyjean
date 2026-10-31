@@ -1,7 +1,7 @@
 /* Portada: carrusel, destacados, comparador y filtros de cristales, y formulario. */
 (() => {
   'use strict';
-  const { waLink, tarjeta, C } = window.App;
+  const { enviar, tarjeta, C } = window.App;
 
   /* Teléfono desde la configuración */
   document.querySelectorAll('[data-tel]').forEach(a => { a.href = `tel:+${C.whatsapp}`; });
@@ -79,7 +79,7 @@
     if (destino) destino.scrollIntoView({ behavior: 'instant' });
   });
 
-  /* Formulario → WhatsApp */
+  /* Formulario → correo o WhatsApp, a elección del cliente */
   const form = document.getElementById('formContacto');
   const motivo = form.motivo;
   const campoEmpresa = document.getElementById('campoEmpresa');
@@ -96,6 +96,6 @@
     let texto = `Hola, soy ${nombre}. ${motivo.value}.`;
     if (!campoEmpresa.hidden && form.empresa.value.trim()) texto += ` Empresa: ${form.empresa.value.trim()}.`;
     if (form.mensaje.value.trim()) texto += ` ${form.mensaje.value.trim()}`;
-    window.open(waLink(texto), '_blank', 'noopener');
+    enviar(e.submitter, `${motivo.value} · ${nombre}`, texto);
   });
 })();

@@ -1,7 +1,7 @@
 /* Nosotros: tiendas, teléfono y formulario de soporte al cliente. */
 (() => {
   'use strict';
-  const { esc, waLink, C } = window.App;
+  const { esc, enviar, C } = window.App;
 
   /* Teléfono desde la configuración */
   document.querySelectorAll('[data-tel]').forEach(a => { a.href = `tel:+${C.whatsapp}`; });
@@ -29,11 +29,6 @@
     let texto = `Hola, soy ${form.nombre.value.trim()}. ${form.tipo.value}.`;
     if (form.pedido.value.trim()) texto += ` Pedido o boleta: ${form.pedido.value.trim()}.`;
     texto += ` ${form.mensaje.value.trim()}`;
-    if (e.submitter && e.submitter.dataset.canal === 'correo') {
-      const asunto = `${form.tipo.value} · ${form.nombre.value.trim()}`;
-      location.href = `mailto:${C.correo}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(texto)}`;
-    } else {
-      window.open(waLink(texto), '_blank', 'noopener');
-    }
+    enviar(e.submitter, `${form.tipo.value} · ${form.nombre.value.trim()}`, texto);
   });
 })();

@@ -6,6 +6,11 @@
   const fmt = n => '$' + Math.round(n).toLocaleString('es-CL');
   const esc = s => String(s ?? '').replace(/[&<>"']/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch]));
   const waLink = texto => `https://wa.me/${C.whatsapp}?text=${encodeURIComponent(texto)}`;
+  /* Envía un formulario por el canal que eligió el cliente (data-canal del botón). */
+  const enviar = (boton, asunto, texto) => {
+    if (boton && boton.dataset.canal === 'correo') location.href = `mailto:${C.correo}?subject=${encodeURIComponent(asunto)}&body=${encodeURIComponent(texto)}`;
+    else window.open(waLink(texto), '_blank', 'noopener');
+  };
 
   /* Carro guardado en el navegador (solo para el prototipo). */
   const KEY = 'elyjean-carro';
@@ -238,5 +243,5 @@
     document.querySelectorAll('select').forEach(lista);
   });
 
-  window.App = { fmt, esc, waLink, Carro, tarjeta, C };
+  window.App = { fmt, esc, enviar, Carro, tarjeta, C };
 })();

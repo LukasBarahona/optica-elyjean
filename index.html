@@ -13,8 +13,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css?v=1.10">
-  <link rel="stylesheet" href="css/escenas.css?v=1.10">
+  <link rel="stylesheet" href="css/estilos.css?v=1.12">
+  <link rel="stylesheet" href="css/escenas.css?v=1.12">
 </head>
 <body>
 
@@ -265,7 +265,7 @@
             <a href="#contacto" class="btn btn--blanco">Quiero agendar</a>
           </div>
           <ol class="pasos">
-            <li class="paso"><span class="paso__num">1</span><h3>Agenda tu hora</h3><p>Por WhatsApp o con el formulario. Te confirmamos el horario.</p></li>
+            <li class="paso"><span class="paso__num">1</span><h3>Agenda tu hora</h3><p>Envíanos el formulario por correo o WhatsApp. Te confirmamos el horario.</p></li>
             <li class="paso"><span class="paso__num">2</span><h3>Examen visual</h3><p>Medimos tu visión y te explicamos tu receta.</p></li>
             <li class="paso"><span class="paso__num">3</span><h3>Elige tus lentes</h3><p>Al llevártelos con nosotros, la consulta queda en <strong>$0</strong>.</p></li>
           </ol>
@@ -336,7 +336,7 @@
         <div class="contacto__info" data-reveal>
           <span class="etiqueta etiqueta--blanca">Agenda hoy mismo</span>
           <h2>Agenda tu hora o tu operativo</h2>
-          <p>Completa el formulario y te respondemos por WhatsApp. <em>¡Es fácil, rápido y profesional!</em></p>
+          <p>Completa el formulario y envíalo por correo o WhatsApp. <em>¡Es fácil, rápido y profesional!</em></p>
           <ul class="contacto__datos">
             <li><span>Teléfono / WhatsApp</span><a href="tel:+56999999999" data-tel><span data-tel-texto style="all:unset">+569 9999 9999</span></a></li>
             <li><span>Tiendas</span><a href="nosotros.html#tiendas">Ver nuestras 2 tiendas</a></li>
@@ -354,7 +354,10 @@
           </div>
           <div class="campo" id="campoEmpresa" hidden><label for="empresa">Empresa y n.º aproximado de trabajadores</label><input id="empresa" name="empresa" type="text" placeholder="Ej: Constructora Sur, 40 personas"></div>
           <div class="campo"><label for="mensaje">Mensaje (opcional)</label><textarea id="mensaje" name="mensaje" rows="2" placeholder="Cuéntanos qué día te acomoda"></textarea></div>
-          <button type="submit" class="btn btn--rojo btn--ancho">Enviar por WhatsApp</button>
+          <div class="envio">
+            <button type="submit" class="btn btn--rojo" data-canal="correo">Enviar por correo</button>
+            <button type="submit" class="btn btn--azul" data-canal="whatsapp">Enviar por WhatsApp</button>
+          </div>
           <p class="error" id="formError" role="alert"></p>
         </form>
       </div>
@@ -364,11 +367,11 @@
 
   <div id="app-footer"></div>
 
-  <script src="js/config.js?v=1.10"></script>
-  <script src="js/productos.js?v=1.10"></script>
-  <script src="js/app.js?v=1.10"></script>
-  <script src="js/scroll-engine.js?v=1.10"></script>
-  <script src="js/escenas.js?v=1.10"></script>
-  <script src="js/portada.js?v=1.10"></script>
+  <script src="js/config.js?v=1.12"></script>
+  <script src="js/productos.js?v=1.12"></script>
+  <script src="js/app.js?v=1.12"></script>
+  <script src="js/scroll-engine.js?v=1.12"></script>
+  <script src="js/escenas.js?v=1.12"></script>
+  <script src="js/portada.js?v=1.12"></script>
 </body>
 </html>

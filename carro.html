@@ -9,8 +9,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;0,800;1,800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/estilos.css?v=1.10">
-  <link rel="stylesheet" href="css/tienda.css?v=1.10">
+  <link rel="stylesheet" href="css/estilos.css?v=1.12">
+  <link rel="stylesheet" href="css/tienda.css?v=1.12">
 </head>
 <body>
   <div id="app-header"></div>
@@ -42,7 +42,7 @@
           <div class="datos-grid">
             <div class="campo campo--ancho"><label for="cNombre">Nombre y apellido</label><input id="cNombre" autocomplete="name"></div>
             <div class="campo"><label for="cEmail">Correo</label><input id="cEmail" type="email" autocomplete="email"></div>
-            <div class="campo"><label for="cTel">Teléfono</label><input id="cTel" type="tel" autocomplete="tel" placeholder="+56 9"></div>
+            <div class="campo"><label for="cTel">Teléfono</label><div class="telefono-cl"><span>+56</span><input id="cTel" type="tel" inputmode="numeric" autocomplete="tel-national" maxlength="11" placeholder="9 1234 5678"></div></div>
           </div>
         </fieldset>
 
@@ -51,7 +51,6 @@
           <p class="error" id="errorCheckout" role="alert"></p>
           <button class="btn btn--rojo btn--ancho" type="submit" id="pagar">Ir a pagar</button>
           <div class="pagos" style="margin-top:12px;justify-content:center"><span>Webpay</span><span>Mercado Pago</span><span>Débito y crédito</span></div>
-          <p class="aviso-ejemplo">Prototipo: el pago es simulado y los precios son de ejemplo. En la tienda final aquí se conecta la pasarela de pago.</p>
         </div>
       </form>
     </div>
@@ -59,9 +58,9 @@
 
   <div id="app-footer"></div>
 
-  <script src="js/config.js?v=1.10"></script>
-  <script src="js/productos.js?v=1.10"></script>
-  <script src="js/app.js?v=1.10"></script>
-  <script src="js/carro.js?v=1.10"></script>
+  <script src="js/config.js?v=1.12"></script>
+  <script src="js/productos.js?v=1.12"></script>
+  <script src="js/app.js?v=1.12"></script>
+  <script src="js/carro.js?v=1.12"></script>
 </body>
 </html>

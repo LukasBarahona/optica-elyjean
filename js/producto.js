@@ -24,12 +24,11 @@
   $('#fichaCat').textContent = CATS[p.categoria];
   $('#fichaNombre').textContent = p.nombre;
   $('#fichaPrecio').textContent = fmt(p.precio);
+  $('#fichaDescripcion').textContent = p.descripcion;
   $('#fichaDatos').innerHTML = [p.material, p.forma, p.publico, p.medidas ? `Medidas ${p.medidas}` : null, `Código ${p.codigo}`]
     .filter(Boolean).map(d => `<span>${esc(d)}</span>`).join('');
 
   /* 1 · Color */
-  const variosColores = p.colores.length === 1 && !p.colores[0].hex;
-  $('#campoColorLibre').hidden = !variosColores;
   $('#colores').innerHTML = p.colores.map((c, i) => `
     <button type="button" class="color" aria-pressed="${i === 0}" data-i="${i}" aria-label="${esc(c.nombre)}">
       <img src="${esc(c.img)}" alt="" width="64" height="44">
@@ -45,7 +44,7 @@
     const c = p.colores[st.color];
     $('#imgPrincipal').src = c.img;
     $('#imgPrincipal').alt = `${p.nombre}, color ${c.nombre}`;
-    $('#colorNombre').textContent = variosColores ? 'Exhibidor con varios colores disponibles.' : `Color: ${c.nombre}`;
+    $('#colorNombre').textContent = `Color: ${c.nombre}`;
     // Probador virtual: el botón aparece solo si el color tiene foto de frente (y el probador no está abierto).
     const probador = $('#btnProbador');
     if ($('#probador').hidden) probador.hidden = !c.frente;
@@ -133,7 +132,6 @@
 
   function validar() {
     const cr = cristalSel();
-    if (variosColores && !$('#colorLibre').value.trim()) return 'Cuéntanos qué color prefieres del exhibidor.';
     if (!cr.receta) return '';
     if (st.modo === 'archivo' && !st.archivo) return 'Sube una foto o PDF de tu receta, o elige otra opción.';
     if (st.modo === 'grados') {
@@ -177,7 +175,7 @@
       : { modo: 'consulta', tienda: $('#tiendaConsulta').value };
     Carro.agregar({
       id: p.id, nombre: p.nombre, img: c.img,
-      color: variosColores ? $('#colorLibre').value.trim() : c.nombre,
+      color: c.nombre,
       precioMarco: p.precio,
       cristal: { id: cr.id, nombre: cr.nombre, precio: cr.precio },
       tratamientos: [...st.trat].map(id => { const t = C.tratamientos.find(x => x.id === id); return { nombre: t.nombre, precio: t.precio }; }),

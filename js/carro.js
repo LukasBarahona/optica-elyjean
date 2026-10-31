@@ -80,6 +80,7 @@
     const falta = req.find(([s]) => !$(s).value.trim());
     if (falta) { err.textContent = `Falta ${falta[1]}.`; $(falta[0]).closest('.campo').classList.add('campo--error'); $(falta[0]).focus(); return; }
     if (!/^\S+@\S+\.\S+$/.test($('#cEmail').value.trim())) { err.textContent = 'Revisa el correo.'; $('#cEmail').focus(); return; }
+    if (!/^9\d{8}$/.test($('#cTel').value.replace(/\D/g, ''))) { err.textContent = 'Revisa el teléfono: son 9 dígitos y parte con 9.'; $('#cTel').closest('.campo').classList.add('campo--error'); $('#cTel').focus(); return; }
     err.textContent = '';
     const nombre = $('#cNombre').value.trim().split(' ')[0];
     Carro.vaciar();
